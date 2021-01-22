@@ -1,71 +1,41 @@
-# Getting Started with Create React App
+# Overview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Congratulations on being selected for the next stage of our interview process! 
 
-## Available Scripts
+We really appreciate the time you have invested in the process so far and only invited you to this next challenge because we think there’s a very good chance you’d be a great fit at Opvia. This is the penultimate step in the interview process! For context at this stage the probability of a candidate receiving an offer is (~35%).
 
-In the project directory, you can run:
+At Opvia we do believe it’s important that all engineers have an appreciation for product and an ability to empathize with the end user. It may be that you are not a ‘product’ person. Please don’t be put off. That’s OK. Not everyone needs the same strengths. Please just do this to the best of your ability.
 
-### `yarn start`
+## How to do this step of the interview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Please clone this repo. This is a simple create-react-app (no backend) featuring the blueprintjs table component https://blueprintjs.com/docs/#table
+2. Take your time to complete the problem below. It's up to you how you go about this!
+3. Invite *hfwm* to your own repo with your solution when you're done
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Opvia product problem
 
-### `yarn test`
+Make it possible for users to (in state only) to add ‘a calculation column’:
+- The user should be able to write a formula where they can specify columns to calculate against
+- Functions that should be possible:
+  - Column based basic maths (addition, multiplication etc.) (e.g. multiplying cell density column and volume column)
+  - Row based formula (e.g. show the rate of change of cell counts)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Hints:
+- The docs here will be helpful: https://blueprintjs.com/docs/#table
+- Google sheets or Airtable may be good things to look at for inspiration
 
-### `yarn build`
+## What we're looking for
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+We are **not looking for perfect code**. Please don’t spend time carefully deciding how to make your commit history look perfect.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Please focus on:
+- Outcome: something nice, simple and intuitive!
+- Efficiency: don't build anything you don't need to. Keep it simple :)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+When to submit: it doesn't need to be a perfect feature. You just need to do enough to demonstrate how you'd go about this.
 
-### `yarn eject`
+## Any questions
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+If you have any questions, or anything is unclear please email Will Moss at will.moss@opvia.bio
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# column-cals-interview
+Once you’ve completed please send an invite github user hfwm.
