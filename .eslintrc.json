@@ -3,8 +3,7 @@
       "browser": true
     },
     "parser": "babel-eslint",
-    "extends": [       "airbnb"
-    ],
+    "extends": ["airbnb"],
     "rules" : {
       "linebreak-style": 0,
       "react/jsx-no-literals": "off",
