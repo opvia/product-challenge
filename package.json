@@ -1,6 +1,7 @@
 {
   "name": "opv-int",
   "version": "0.1.1",
+  "private": true,
   "dependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
