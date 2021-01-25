@@ -1,7 +1,6 @@
 {
   "name": "opv-int",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.1",
   "dependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
@@ -41,6 +40,9 @@
     ]
   },
   "devDependencies": {
-    "eslint-config-airbnb": "^18.2.1"
+    "eslint-config-airbnb": "^18.2.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.17.0"
   }
 }
