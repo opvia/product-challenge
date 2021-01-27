@@ -22,7 +22,7 @@ Make it possible for users to (in state only) to add ‘a calculation column’:
 
 Hints:
 - The docs here will be helpful: https://blueprintjs.com/docs/#table
-- Google sheets or Airtable may be good things to look at for inspiration
+- Airtable may be good things to look at for inspiration
 
 ## What we're looking for
 
