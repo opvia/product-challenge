@@ -22,7 +22,8 @@ Make it possible for users to (in state only) to add ‘a calculation column’:
 
 Hints:
 - The docs here will be helpful: https://blueprintjs.com/docs/#table
-- Airtable may be good things to look at for inspiration
+- Airtable may be good for inspiration
+- Keep it simple!
 
 ## What we're looking for
 
@@ -32,10 +33,10 @@ Please focus on:
 - Outcome: something nice, simple and intuitive!
 - Efficiency: don't build anything you don't need to. Keep it simple :)
 
-When to submit: it doesn't need to be a perfect feature. You just need to do enough to demonstrate how you'd go about this.
+When to submit: it doesn't need to be a perfect feature. You just need to do enough to demonstrate how you'd go about this: perhaps enough so that you would be sitting down with a customer you know well and screensharing to get their feedback.
 
 ## Any questions
 
 If you have any questions, or anything is unclear please email Will Moss at will.moss@opvia.bio
 
-Once you’ve completed please send an invite github user hfwm.
+Once you’ve completed please send an invite to your repo to github user hfwm.
