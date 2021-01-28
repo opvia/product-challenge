@@ -10,7 +10,7 @@ At Opvia we do believe it’s important that all engineers have an appreciation 
 
 1. Please clone this repo. This is a simple create-react-app (no backend) featuring the blueprintjs table component https://blueprintjs.com/docs/#table
 2. Take your time to complete the problem below. It's up to you how you go about this!
-3. Invite *hfwm* to your own repo with your solution when you're done
+3. Invite *hfmw* to your own repo with your solution when you're done
 
 ## Opvia product problem
 
@@ -38,5 +38,3 @@ When to submit: it doesn't need to be a perfect feature. You just need to do eno
 ## Any questions
 
 If you have any questions, or anything is unclear please email Will Moss at will.moss@opvia.bio
-
-Once you’ve completed please send an invite to your repo to github user hfmw.
