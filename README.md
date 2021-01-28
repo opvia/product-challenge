@@ -39,4 +39,4 @@ When to submit: it doesn't need to be a perfect feature. You just need to do eno
 
 If you have any questions, or anything is unclear please email Will Moss at will.moss@opvia.bio
 
-Once you’ve completed please send an invite to your repo to github user hfwm.
+Once you’ve completed please send an invite to your repo to github user hfmw.
