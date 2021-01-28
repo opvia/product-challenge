@@ -2,7 +2,7 @@
 
 Congratulations on being selected for the next stage of our interview process! 
 
-We really appreciate the time you have invested in the process so far and only invited you to this next challenge because we think there’s a very good chance you’d be a great fit at Opvia. This is the penultimate step in the interview process! For context at this stage the probability of a candidate receiving an offer is (~35%).
+We really appreciate the time you have invested in the process so far and only invited you to this next challenge because we think there’s a very good chance you’d be a great fit at Opvia. This is the penultimate step in the interview process! For context at this stage the probability of a candidate receiving an offer is (~30%).
 
 At Opvia we do believe it’s important that all engineers have an appreciation for product and an ability to empathize with the end user. It may be that you are not a ‘product’ person. Please don’t be put off. That’s OK. Not everyone needs the same strengths. Please just do this to the best of your ability.
 
@@ -13,6 +13,8 @@ At Opvia we do believe it’s important that all engineers have an appreciation 
 3. Invite *hfmw* to your own repo with your solution when you're done
 
 ## Opvia product problem
+
+Here's the situation: scientists are using Opvia to store all their data in a standardised structure in one place. However, it's not very useful for analysis because scientists can't yet apply formulas to the data. You've told a customer that you're building this feature and you're going to demo it to them. You decide that for a demo the minimum you can do is to...
 
 Make it possible for users to (in state only) to add ‘a calculation column’:
 - The user should be able to write a formula where they can specify columns to calculate against
@@ -30,10 +32,14 @@ Hints:
 We are **not looking for perfect code**. Please don’t spend time carefully deciding how to make your commit history look perfect.
 
 Please focus on:
-- Outcome: something nice, simple and intuitive!
+- Outcome: something nice, simple and intuitive
 - Efficiency: don't build anything you don't need to. Keep it simple :)
 
-When to submit: it doesn't need to be a perfect feature. You just need to do enough to demonstrate how you'd go about this: perhaps enough so that you would be sitting down with a customer you know well and screensharing to get their feedback.
+When to submit: it doesn't need to be a perfect feature. You just need to do enough to demonstrate how you'd go about this: perhaps enough so that you would be happy to sit down with a customer you know well and screenshare to get their feedback.
+
+## FAQS
+- Can I use typescript? - of course, I've just provided a starting point
+- Can I change the structure/content of the raw data? - of course if you would like
 
 ## Any questions
 
