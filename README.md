@@ -22,20 +22,9 @@ Make it possible for users to (in state only) to add ‘a calculation column’:
   - Column based basic maths (addition, multiplication etc.) (e.g. multiplying cell density column and volume column)
   - Row based formula (e.g. show the rate of change of cell counts)
 
-Hints:
-- The docs here will be helpful: https://blueprintjs.com/docs/#table
-- Airtable may be good for inspiration
-- Keep it simple!
-
 ## What we're looking for
 
-We are **not looking for perfect code**. Please don’t spend time carefully deciding how to make your commit history look perfect.
-
-Please focus on:
-- Outcome: something nice, simple and intuitive
-- Efficiency: don't build anything you don't need to. Keep it simple :)
-
-When to submit: it doesn't need to be a perfect feature. You just need to do enough to demonstrate how you'd go about this: perhaps enough so that you would be happy to sit down with a customer you know well and screenshare to get their feedback.
+Make something you would be happy to show to a customer.
 
 ## FAQS
 - Can I use typescript? - of course, I've just provided a starting point
