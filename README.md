@@ -10,7 +10,7 @@ At Opvia we do believe it’s important that all engineers have an appreciation 
 
 1. Please clone this repo and use it as your starting point. This is a simple create-react-app featuring the blueprintjs table component https://blueprintjs.com/docs/#table
 2. Take your time to complete the problem below. It's up to you how you go about this!
-3. Invite *hfmw* and *wshart* to your own repo with your solution when you're done
+3. Invite *hfmw* to your own repo with your solution when you're done
 
 ## Opvia product problem
 
