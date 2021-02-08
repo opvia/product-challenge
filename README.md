@@ -28,10 +28,10 @@ Make something that would make the scientist happy!
 
 Unsure whether to submit? Would you happily sit down with a scientist and show them what you've built? Would what you've showed them make them more excited about using Opvia?
 
-## FAQS
+### FAQS
 - Can I use typescript? - of course, I've just provided a starting point to save time
 - Can I change the structure/content of the raw data? - of course if you would like to
 
-## Any questions
+### Any questions
 
 If you have any questions, or anything is unclear please email Will Moss at will.moss@opvia.bio
