@@ -1,4 +1,4 @@
-# Overview
+# Opvia Take-home Product Challenge 
 
 Congratulations on being selected for the next stage of our interview process! 
 
@@ -6,10 +6,10 @@ We really appreciate the time you have invested in the process so far and only i
 
 At Opvia we do believe it’s important that all engineers have an appreciation for product and an ability to empathize with the end user. It may be that you are not a ‘product’ person. That’s OK.
 
-## How to do this step of the interview
+## How to complete this stage of the interview process
 
 1. Please clone this repo and use it as your starting point. This is a simple create-react-app featuring the blueprintjs table component https://blueprintjs.com/docs/#table
-2. Take your time to complete the problem below. It's up to you how you go about this!
+2. Take your time to complete the 'Opvia product problem' below. It's up to you how you go about this!
 3. Invite *hfmw* to your own repo with your solution when you're done
 
 ## Opvia product problem
