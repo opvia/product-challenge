@@ -21,7 +21,7 @@ Make it possible for users to add ‘calculation columns`:
 - The user should be able to write a formula where they can specify columns to calculate against
 - This is the functionality required you've identified with the user:
   - Column based basic maths (addition, multiplication etc.) (e.g. multiplying cell density column and volume column -> cell count)
-  - Row based formula (e.g. show the rate of change of the calculated cell count) _FAC Apprentice? This is a stretch goal and not required._
+  - Row based formula (e.g. show the rate of change of the calculated cell count)
 
 ### What we're looking for
 
