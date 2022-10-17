@@ -16,18 +16,20 @@ This is our only opportunity to see what you can build so we weight it very high
 
 Here's the situation: scientists are using Opvia to store all their data in a standardised structure in one place. However, it's not very useful for analysis because scientists can't yet apply formulas to the data. You've told a customer that you're building this feature and you're going to demo it to them...
 
-Make it possible for users to add ‘calculation columns`:
+Make it possible for users to add `calculation columns`:
 
-- The user should be able to write a formula where they can specify columns to calculate against
+- The user should be able to write a formula for a new column where they can specify columns to calculate against
 - This is the functionality required you've identified with the user:
   - Column based basic maths (addition, multiplication etc.) (e.g. multiplying cell density column and volume column -> cell count)
   - Row based formula (e.g. show the rate of change of the calculated cell count)
 
 ### What we're looking for
 
-Make something that would make the scientist happy!
+Something that meets the above minimal requirements and can act as a starting point to get more feedback on. 
 
 Unsure whether to submit? Would you happily sit down with a scientist and show them what you've built? Would what you've showed them make them more excited about using Opvia?
+
+Ran out of time? Document any features that you'd like to have built.
 
 #### FAQS
 
