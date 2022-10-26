@@ -1,4 +1,4 @@
-export const dummyTableData = {
+export const dummyTableData: { [key: string]: string | number } = {
   '0-0': '2021-01-01T20:39:26.023Z',
   '0-1': '2021-01-02T20:39:26.023Z',
   '0-2': '2021-01-03T20:39:26.023Z',
