@@ -10,13 +10,15 @@ const columns = [
 ];
 
 const OpviaTable: React.FC = () => {
-  const getSparseRefFromIndexes = (rowIndex, columnIndex) =>
-    `${columnIndex}-${rowIndex}`;
+  const getSparseRefFromIndexes = (
+    rowIndex: number,
+    columnIndex: number
+  ): string => `${columnIndex}-${rowIndex}`;
 
-  const cellRenderer = (rowIndex, columnIndex) => {
+  const cellRenderer = (rowIndex: number, columnIndex: number) => {
     const sparsePosition = getSparseRefFromIndexes(rowIndex, columnIndex);
     const value = dummyTableData[sparsePosition];
-    return <EditableCell2 value={value} />;
+    return <EditableCell2 value={String(value)} />;
   };
 
   const cols = columns.map((column) => (
