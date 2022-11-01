@@ -20,7 +20,7 @@ Here's the situation: scientists are using Opvia to store all their data in a st
 
 Make it possible for users to add `calculation columns`:
 
-- The user should be able to write a formula for a new column where they can specify columns to calculate against
+- The user should be able to add new derived properties of a record by writing a formula that can specify other columns to calculate with.
 - This is the functionality required you've identified with the user:
   - Column based basic maths (addition, multiplication etc.) (e.g. multiplying cell density column and volume column -> cell count)
   - Row based formula (e.g. show the rate of change of the calculated cell count)
