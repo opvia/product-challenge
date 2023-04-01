@@ -1,0 +1,96 @@
+import { atom, selector, useRecoilState } from "recoil";
+
+
+interface RowData {
+    [key: string]: string | number;
+}
+
+type ColDataType = "time" | "data";
+
+interface ColumnData {
+    columnName: string;
+    columnType: ColDataType;
+    columnId: string;
+}
+
+export const tableData = atom<RowData>({
+    key: 'tableData',
+    default: {
+        "0-0": "2021-01-01T20:39:26.023Z",
+        "0-1": "2021-01-02T20:39:26.023Z",
+        "0-2": "2021-01-03T20:39:26.023Z",
+        "0-3": "2021-01-04T20:39:26.023Z",
+        "0-4": "2021-01-05T20:39:26.023Z",
+        "0-5": "2021-01-06T20:39:26.023Z",
+        "0-6": "2021-01-07T20:39:26.023Z",
+        "0-7": "2021-01-08T20:39:26.023Z",
+        "1-0": 100,
+        "1-1": 120,
+        "1-2": 140,
+        "1-3": 150,
+        "1-4": 166,
+        "1-5": 174,
+        "1-6": 182,
+        "1-7": 194,
+        "2-0": 990,
+        "2-1": 980,
+        "2-2": 970,
+        "2-3": 960,
+        "2-4": 956,
+        "2-5": 954,
+        "2-6": 955,
+        "2-7": 949,
+    }
+});
+
+
+export const columnData = atom<ColumnData[]>({
+    key: 'columnData',
+    default: [
+        { columnName: "Time", columnType: "time", columnId: "time" },
+        { columnName: "Cell Density", columnType: "data", columnId: "cell_density" },
+        { columnName: "Volume", columnType: "data", columnId: "volume" },
+    ]
+});
+
+
+export const columnNamesAsVariables = selector({
+    key: 'columnNamesAsVariables',
+    get: ({ get }) => {
+        const columns = get(columnData);
+        return columns.map((column: ColumnData) => column.columnName.replaceAll(' ', '_').toLowerCase());
+    },
+});
+
+export const getSparseRefFromIndexes = (rowIndex: number, columnIndex: number): string => `${columnIndex}-${rowIndex}`;
+
+export const getSparseDataBasedOnColumnName = selector({
+    key: 'getSparseDataBasedOnColumnName',
+    get: ({ get }) => (columnName: string) => {
+        const columns = get(columnData);
+        const sparseCellData = get(tableData);
+        const columnIndex = columns.findIndex((c) => c.columnId === columnName);
+        if (!columnIndex) return [];
+
+        const values: Array<number | string> = []
+        for (let i = 0; i < 8; i++) {
+            values.push(sparseCellData[`${columnIndex}-${i}`])
+        }
+        return values;
+    }
+});
+
+
+export const createSparseCellData = (arr: number[], newColumnName: string) => {
+    const [data, updateData] = useRecoilState(tableData);
+    const [columns, updateColumns] = useRecoilState(columnData);
+    const newSparseCellData = { ...data };
+    const largestIndex = columns.length
+
+    for (let i = 0; i < arr.length; i++) {
+        newSparseCellData[getSparseRefFromIndexes(i, largestIndex)] = arr[i];
+    }
+    updateData(newSparseCellData)
+    const newColData = { columnName: newColumnName, columnType: "data", columnId: newColumnName.toLowerCase().replaceAll(" ", "_") } as ColumnData
+    updateColumns([...columns, newColData])
+}

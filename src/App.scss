@@ -1,0 +1,10 @@
+@import "@blueprintjs/core/lib/scss/variables";
+
+.App {
+  margin: 0% 20%;
+  max-width: 1000px;
+}
+
+.app-title {
+  color: $pt-intent-primary;
+}

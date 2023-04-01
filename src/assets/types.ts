@@ -1,2 +1,12 @@
-export const operators = ["add", "subtract", "multiply", "divide"] as const;
-export type Operator = typeof operators[number];
+export type Operator = "+" | "-" | "*" | "/";
+
+export interface ParsedExpressionResult {
+  operator: Operator;
+  colA: string;
+  colB: string;
+}
+
+export interface ExpressionEvent {
+  newColumnName: string;
+  parseResult: ParsedExpressionResult;
+}
