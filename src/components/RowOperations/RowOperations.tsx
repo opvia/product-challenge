@@ -18,17 +18,9 @@ const RowOperations = () => {
     const timeBasedColumns = columns.filter((c) => c.columnType === 'time')
     const dataBasedColumns = columns.filter((c) => c.columnType === 'data')
 
-    const handleNewColName = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setNewColumnName(e.target.value)
-    }
-
-    const handleSelectColA = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setColA(e.target.value)
-    }
-
-    const handleSelectColB = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setColB(e.target.value)
-    }
+    const handleNewColName = (e: React.ChangeEvent<HTMLInputElement>) => setNewColumnName(e.target.value)
+    const handleSelectColA = (e: React.ChangeEvent<HTMLSelectElement>) => setColA(e.target.value)
+    const handleSelectColB = (e: React.ChangeEvent<HTMLSelectElement>) => setColB(e.target.value)
 
     const handleGenerate = () => {
         const colAData = getSparseDataBasedOnColumnName(colA).map((d) => new Date(d).getTime())
