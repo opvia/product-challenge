@@ -5,8 +5,7 @@ import { evaluateExpression, mathExpressionParser, operators, type ParsedExpress
 import { columnData, columnNamesAsVariables } from '../../atoms/tableData'
 import Tags from '../Tags/Tags'
 import useTableDataHelpers from '../../atoms/tableDataHelpers'
-
-import './ColOperations.scss'
+import './ColOperations.styles.scss'
 
 const ColOperations = (): ReactElement => {
   const [, setExpression] = useState<string>('')
@@ -48,14 +47,14 @@ const ColOperations = (): ReactElement => {
   }
 
   return (
-        <div className="expression-container">
+        <div className="col-operations-container">
             <h2>Column Operations</h2>
             <p>Use variable names and operators to create new columns</p>
-            <div className="operators-container card">
+            <div className="card">
                 <h3>Operators</h3>
                 <Tags tags={operators.map((o) => o)} />
             </div>
-            <div className="variables-container card">
+            <div className="card">
                 <h3>Variable names</h3>
                 <Tags tags={columnVariableNames} />
             </div>

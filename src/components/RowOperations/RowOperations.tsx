@@ -34,7 +34,7 @@ const RowOperations = (): ReactElement => {
   }
 
   return (
-        <div className="formula-container">
+        <div className="row-operations-container">
 
             <h2>Row Operations</h2>
             <p>Use pre-defined formulas</p>

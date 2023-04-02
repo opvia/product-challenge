@@ -7,7 +7,7 @@ interface TagsProps {
 
 const Tags: FC<TagsProps> = ({ tags }) => {
   return (
-        <ul className="tags">
+        <ul className="tags-container">
             {tags.map((tag) => <li key={tag}> <span className="tag" >{tag}</span></li>)}
         </ul>
   )
