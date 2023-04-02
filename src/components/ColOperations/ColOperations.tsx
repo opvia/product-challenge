@@ -53,17 +53,7 @@ const ColOperations = (): ReactElement => {
 
   return (
         <div className="col-operations-container">
-            <h2>Column Operations</h2>
-            <p>Use variable names and operators to create new columns</p>
-            <div className="card">
-                <h3>Operators</h3>
-                <Tags tags={operators.map((o) => o)} />
-            </div>
-            <div className="card">
-                <h3>Variable names</h3>
-                <Tags tags={columnVariableNames} />
-            </div>
-            <div className="form-container">
+           <div className="form-container">
                 <div className="row">
                     <label htmlFor="expression"><h4>Expression</h4></label>
                     <input type="text" name="expression" id="expression" onInput={handleInputChange} placeholder="cell_density * volume" />
@@ -73,8 +63,21 @@ const ColOperations = (): ReactElement => {
                     <input type="text" required onInput={handleNewColumnName} placeholder="Cell Count" />
                 </div>
                 <div className="row">
+                    <label htmlFor="newColumnName"><h4>Finish</h4></label>
                     <button onClick={handleExpressionParse}>Generate</button>
                 </div>
+            </div>
+            <div className="spacing-container">
+              <h2>Column Operations</h2>
+              <p>Use variable names and operators to create new columns</p>
+              <div className="card">
+                  <h3>Operators</h3>
+                  <Tags tags={operators.map((o) => o)} />
+              </div>
+              <div className="card">
+                  <h3>Variable names</h3>
+                  <Tags tags={columnVariableNames} />
+              </div>
             </div>
         </div>
   )

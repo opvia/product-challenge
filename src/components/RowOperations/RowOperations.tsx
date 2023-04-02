@@ -44,10 +44,8 @@ const RowOperations = (): ReactElement => {
 
   return (
         <div className="row-operations-container">
-            <h2>Row Operations</h2>
-            <p>Use pre-defined formulas</p>
             <div className="form-container">
-            <div className="row f-full">
+                <div className="row f-full">
                     <label><h4>Formula</h4></label>
                     <button>
                         <span className="formula-name">Rate of change</span>
@@ -78,6 +76,10 @@ const RowOperations = (): ReactElement => {
                         </button>
                     </div>
                 </div>
+            </div>
+            <div className="spacing-container">
+                <h2>Row Operations</h2>
+                <p>Use pre-defined formulas</p>
             </div>
         </div>
   )
