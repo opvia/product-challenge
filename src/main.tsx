@@ -6,7 +6,7 @@ import {
 import App from './App';
 import 'normalize.css';
 import '@blueprintjs/core/lib/css/blueprint.css';
-import './main.scss';
+import './main.css';
 
 const root = createRoot(document.getElementById('root') as HTMLElement);
 

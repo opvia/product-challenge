@@ -1,4 +1,4 @@
-import { atom, selector, useRecoilState } from "recoil";
+import { atom, selector, selectorFamily, useRecoilState } from "recoil";
 
 
 interface RowData {
@@ -64,9 +64,9 @@ export const columnNamesAsVariables = selector({
 
 export const getSparseRefFromIndexes = (rowIndex: number, columnIndex: number): string => `${columnIndex}-${rowIndex}`;
 
-export const getSparseDataBasedOnColumnName = selector({
+export const getSparseDataBasedOnColumnName = selectorFamily({
     key: 'getSparseDataBasedOnColumnName',
-    get: ({ get }) => (columnName: string) => {
+    get: (columnName: string) => ({ get }) => {
         const columns = get(columnData);
         const sparseCellData = get(tableData);
         const columnIndex = columns.findIndex((c) => c.columnId === columnName);
@@ -80,17 +80,3 @@ export const getSparseDataBasedOnColumnName = selector({
     }
 });
 
-
-export const createSparseCellData = (arr: number[], newColumnName: string) => {
-    const [data, updateData] = useRecoilState(tableData);
-    const [columns, updateColumns] = useRecoilState(columnData);
-    const newSparseCellData = { ...data };
-    const largestIndex = columns.length
-
-    for (let i = 0; i < arr.length; i++) {
-        newSparseCellData[getSparseRefFromIndexes(i, largestIndex)] = arr[i];
-    }
-    updateData(newSparseCellData)
-    const newColData = { columnName: newColumnName, columnType: "data", columnId: newColumnName.toLowerCase().replaceAll(" ", "_") } as ColumnData
-    updateColumns([...columns, newColData])
-}

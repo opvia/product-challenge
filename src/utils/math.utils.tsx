@@ -1,4 +1,4 @@
-import { Operator } from "@/assets/types";
+import { Operator } from "../assets/types";
 
 export const getOperationFunction = (
     operator: Operator
