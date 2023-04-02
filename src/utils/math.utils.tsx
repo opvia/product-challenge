@@ -1,4 +1,8 @@
-import { type ParsedExpressionResult } from '../assets/types'
+export interface ParsedExpressionResult {
+  operator: Operator
+  colA: string
+  colB: string
+}
 
 export const operators = ['+', '-', '*', '/'] as const
 export type Operator = typeof operators[number]

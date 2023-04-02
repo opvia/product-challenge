@@ -1,8 +1,7 @@
 import React, { useState, type ReactElement } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 
-import { type ParsedExpressionResult } from '../../assets/types'
-import { evaluateExpression, mathExpressionParser, operators } from '../../utils/math.utils'
+import { evaluateExpression, mathExpressionParser, operators, type ParsedExpressionResult } from '../../utils/math.utils'
 import { columnData, columnNamesAsVariables } from '../../atoms/tableData'
 import Tags from '../Tags/Tags'
 import useTableDataHelpers from '../../atoms/tableDataHelpers'
