@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useRecoilState, useRecoilValue } from "recoil";
 
 import { ParsedExpressionResult } from "../../assets/types";
-import { evaluateExpression, Operator, operators } from "../../utils/math.utils";
+import { evaluateExpression, mathExpressionParser, operators } from "../../utils/math.utils";
 import { columnData, columnNamesAsVariables, } from "../../atoms/tableData";
 import Tags from "../Tags/Tags";
 import useTableDataHelpers from "../../atoms/tableDataHelpers";
@@ -20,32 +20,15 @@ const ColOperations = () => {
 
     const { createSparseCellData, getSparseDataBasedOnColumnName } = useTableDataHelpers()
 
-    function parseExpression(expression: string): ParsedExpressionResult {
-        const operatorRegex = /[\+\-\*\/]/;
-        const tokens = expression.split(operatorRegex);
-        const operator = expression.match(operatorRegex)?.[0] || ""
-
-        if (tokens.length !== 2 || !operator) {
-            return {} as ParsedExpressionResult
-        }
-        return {
-            operator: operator as Operator,
-            colA: tokens[0].trim(),
-            colB: tokens[1].trim(),
-        };
-    }
-
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setExpression(e.target.value)
-        const { operator, colA, colB } = parseExpression(e.target.value);
+        setExpression(e.target.value.trim())
+        const { operator, colA, colB } = mathExpressionParser(e.target.value);
         if (operator && colA && colB) {
             setParsedExpression({ operator, colA, colB })
         }
     }
 
-    const handleNewColumnName = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setColumnName(e.target.value)
-    }
+    const handleNewColumnName = (e: React.ChangeEvent<HTMLInputElement>) => setColumnName(e.target.value)
 
     const handleExpressionParse = () => {
         if (parsedExpression === null) return;
