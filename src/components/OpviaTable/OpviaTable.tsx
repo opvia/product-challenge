@@ -1,6 +1,6 @@
 import React from 'react';
 import './OpviaTable.scss'
-import { Column, EditableCell2, Region, RegionCardinality, Regions, Table2 } from '@blueprintjs/table';
+import { Column, EditableCell2, RegionCardinality, Table2 } from '@blueprintjs/table';
 import ColOperations from '../ColOperations/ColOperations';
 import { useRecoilValue } from 'recoil';
 import { columnData, getLargestRowLength, getSparseRefFromIndexes, tableData } from '../../atoms/tableData';

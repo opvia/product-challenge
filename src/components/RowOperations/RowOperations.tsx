@@ -1,6 +1,9 @@
-import { useRecoilState, useRecoilValue } from "recoil"
-import { columnData, getSparseRefFromIndexes, tableData, ColumnData, getLargestRowLength } from "../../atoms/tableData"
 import { useState } from "react"
+import { useRecoilState } from "recoil"
+
+import { columnData } from "../../atoms/tableData"
+import useTableDataHelpers from "../../atoms/tableDataHelpers"
+
 import './RowOperations.styles.scss'
 
 const RowOperations = () => {
@@ -8,17 +11,16 @@ const RowOperations = () => {
     const [newColumnName, setNewColumnName] = useState<string>('Rate')
     const [colA, setColA] = useState<string>('time')
     const [colB, setColB] = useState<string>('cell_density')
-    const [sparseCellData, setSparseCellData] = useRecoilState(tableData)
     const [columns, setColumns] = useRecoilState(columnData)
-    const largestRowLength = useRecoilValue(getLargestRowLength)
 
-    const handleNewColName = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setNewColumnName(e.target.value)
-    }
+    const { createSparseCellData, getSparseDataBasedOnColumnName } = useTableDataHelpers()
 
     const timeBasedColumns = columns.filter((c) => c.columnType === 'time')
     const dataBasedColumns = columns.filter((c) => c.columnType === 'data')
 
+    const handleNewColName = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setNewColumnName(e.target.value)
+    }
 
     const handleSelectColA = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setColA(e.target.value)
@@ -28,47 +30,16 @@ const RowOperations = () => {
         setColB(e.target.value)
     }
 
-    const getSparseDataBasedOnColumnName = (columnId: string) => {
-        const columnIndex = columns.findIndex((c) => c.columnId === columnId);
-        if (columnIndex < 0) return new Array<number>;
-
-        const values: Array<number> = []
-        for (let i = 0; i < largestRowLength; i++) {
-            let v = sparseCellData[`${columnIndex}-${i}`]
-            if (typeof v === 'string') v = new Date(v).getTime()
-            values.push(v)
-        }
-        return values;
-    }
-
-    const createSparseCellData = (arr: number[], newColumnName: string) => {
-        const newSparseCellData = { ...sparseCellData };
-        const largestIndex = columns.length
-
-        for (let i = 0; i < arr.length; i++) {
-            newSparseCellData[getSparseRefFromIndexes(i, largestIndex)] = arr[i];
-        }
-        setSparseCellData(newSparseCellData)
-        const newColData = { columnName: newColumnName, columnType: "data", columnId: newColumnName.toLowerCase().replaceAll(" ", "_") } as ColumnData
-        setColumns([...columns, newColData])
-    }
-
     const handleGenerate = () => {
-        const colAIndex = columns.findIndex((c) => c.columnId === colA)
-        const colBIndex = columns.findIndex((c) => c.columnId === colB)
-
         const colAData = getSparseDataBasedOnColumnName(colA).map((d) => new Date(d).getTime())
-
         const colBData = getSparseDataBasedOnColumnName(colB)
 
-        const newColumnData = colBData.map((d, i) => {
+        const calculation = colBData.map((d, i) => {
             if (i === 0) return 0
             const rateOfChange = (d - colBData[i - 1]) / ((colAData[i] - colAData[i - 1]) * 1000)
             return rateOfChange
         })
-
-        createSparseCellData(newColumnData, newColumnName)
-
+        createSparseCellData(calculation, newColumnName)
     }
 
     return (

@@ -40,7 +40,7 @@ export interface ColumnData {
 
 export const tableData = atom<RowData>({
     key: 'tableData',
-    default: defaultData
+    default: defaultData,
 });
 
 

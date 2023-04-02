@@ -1,10 +1,13 @@
+import { useState } from "react"
+import { useRecoilState, useRecoilValue } from "recoil";
+
 import { ParsedExpressionResult } from "../../assets/types";
 import { evaluateExpression, Operator, operators } from "../../utils/math.utils";
-import { useState } from "react"
-import './ColOperations.scss'
-import { useRecoilState, useRecoilValue } from "recoil";
-import { ColumnData, columnData, columnNamesAsVariables, getLargestRowLength, getSparseRefFromIndexes, tableData } from "../../atoms/tableData";
+import { columnData, columnNamesAsVariables, } from "../../atoms/tableData";
 import Tags from "../Tags/Tags";
+import useTableDataHelpers from "../../atoms/tableDataHelpers";
+
+import './ColOperations.scss'
 
 const ColOperations = () => {
 
@@ -12,11 +15,10 @@ const ColOperations = () => {
     const [parsedExpression, setParsedExpression] = useState<ParsedExpressionResult | null>(null)
     const [newColumnName, setColumnName] = useState<string>('')
 
-    const largestRowLength = useRecoilValue(getLargestRowLength)
     const columnVariableNames = useRecoilValue(columnNamesAsVariables)
     const [columns, setColumns] = useRecoilState(columnData)
-    const [sparseCellData, setSparseCellData] = useRecoilState(tableData)
 
+    const { createSparseCellData, getSparseDataBasedOnColumnName } = useTableDataHelpers()
 
     function parseExpression(expression: string): ParsedExpressionResult {
         const operatorRegex = /[\+\-\*\/]/;
@@ -45,19 +47,6 @@ const ColOperations = () => {
         setColumnName(e.target.value)
     }
 
-    const getSparseDataBasedOnColumnName = (columnName: string) => {
-        const columnIndex = columns.findIndex((c) => c.columnId === columnName);
-        if (columnIndex < 0) return [];
-
-        const values: Array<number> = []
-        for (let i = 0; i < largestRowLength; i++) {
-            let v = sparseCellData[`${columnIndex}-${i}`]
-            if (typeof v === 'string') v = new Date(v).getTime()
-            values.push(v)
-        }
-        return values;
-    }
-
     const handleExpressionParse = () => {
         if (parsedExpression === null) return;
         const { colA, colB, operator } = parsedExpression
@@ -75,17 +64,6 @@ const ColOperations = () => {
         createSparseCellData(res, newColumnName)
     }
 
-    const createSparseCellData = (arr: number[], newColumnName: string) => {
-        const newSparseCellData = { ...sparseCellData };
-        const largestIndex = columns.length
-
-        for (let i = 0; i < arr.length; i++) {
-            newSparseCellData[getSparseRefFromIndexes(i, largestIndex)] = arr[i];
-        }
-        setSparseCellData(newSparseCellData)
-        const newColData = { columnName: newColumnName, columnType: "data", columnId: newColumnName.toLowerCase().replaceAll(" ", "_") } as ColumnData
-        setColumns([...columns, newColData])
-    }
 
     return (
         <div className="expression-container">
