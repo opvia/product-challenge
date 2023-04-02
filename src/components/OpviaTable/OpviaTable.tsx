@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './OpviaTable.scss'
 import { Column, EditableCell2, Region, RegionCardinality, Regions, Table2 } from '@blueprintjs/table';
-import { useExperimentData } from '../../contexts/experimentData';
-import Expression from '../Expression/Expression';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import ColOperations from '../ColOperations/ColOperations';
+import { useRecoilValue } from 'recoil';
 import { columnData, getSparseRefFromIndexes, tableData } from '../../atoms/tableData';
+import RowOperations from '../RowOperations/RowOperations';
 
 const OpviaTable: React.FC = () => {
 
@@ -30,7 +30,10 @@ const OpviaTable: React.FC = () => {
       <Table2 enableRowHeader={true} defaultRowHeight={30} numRows={8} selectionModes={[RegionCardinality.FULL_COLUMNS, RegionCardinality.FULL_ROWS]}>
         {cols}
       </Table2>
-      <Expression />
+      <div className="forms">
+        <ColOperations />
+        <RowOperations />
+      </div>
     </div >
   );
 };

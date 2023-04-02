@@ -1,13 +1,13 @@
-import { atom, selector, selectorFamily, useRecoilState } from "recoil";
+import { atom, selector, selectorFamily } from "recoil";
 
 
 interface RowData {
     [key: string]: string | number;
 }
 
-type ColDataType = "time" | "data";
+export type ColDataType = "time" | "data";
 
-interface ColumnData {
+export interface ColumnData {
     columnName: string;
     columnType: ColDataType;
     columnId: string;
@@ -79,4 +79,3 @@ export const getSparseDataBasedOnColumnName = selectorFamily({
         return values;
     }
 });
-

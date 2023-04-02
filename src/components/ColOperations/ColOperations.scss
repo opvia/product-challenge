@@ -1,0 +1,49 @@
+.expression-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 50%;
+
+  h2 {
+    margin-top: 0px;
+  }
+
+  .col {
+    width: 50%;
+  }
+
+  .col:first-of-type {
+    margin-right: 20px;
+  }
+
+  .col:last-of-type {
+    margin-left: 20px;
+  }
+}
+
+.variables-container {
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+  align-items: self-start;
+}
+
+.operators-container {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+  align-items: self-start;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 3px 10px;
+}

@@ -1,14 +1,15 @@
-import { ExpressionEvent, Operator, ParsedExpressionResult } from "@/assets/types";
-import { evaluateExpression } from "../../utils/math.utils";
+import { ParsedExpressionResult } from "../../assets/types";
+import { evaluateExpression, Operator, operators } from "../../utils/math.utils";
 import { useState } from "react"
-import './Expression.scss'
+import './ColOperations.scss'
 import { useRecoilState, useRecoilValue } from "recoil";
-import { columnData, columnNamesAsVariables, getSparseRefFromIndexes, tableData } from "../../atoms/tableData";
+import { ColumnData, columnData, columnNamesAsVariables, getSparseRefFromIndexes, tableData } from "../../atoms/tableData";
+import Tags from "../Tags/Tags";
 
-const Expression = () => {
+const ColOperations = () => {
 
     const [expression, setExpression] = useState<string>('')
-    const [parsedExpression, setParsedExpression] = useState<ParsedExpressionResult>({ operator: '+', colA: '', colB: '' })
+    const [parsedExpression, setParsedExpression] = useState<ParsedExpressionResult | null>(null)
     const [newColumnName, setColumnName] = useState<string>('')
 
     const columnVariableNames = useRecoilValue(columnNamesAsVariables)
@@ -19,14 +20,10 @@ const Expression = () => {
     function parseExpression(expression: string): ParsedExpressionResult {
         const operatorRegex = /[\+\-\*\/]/;
         const tokens = expression.split(operatorRegex);
-        const operator = expression.match(operatorRegex)?.[0] || "+" as Operator
+        const operator = expression.match(operatorRegex)?.[0] || ""
 
         if (tokens.length !== 2 || !operator) {
-            return {
-                operator: '+' as Operator,
-                colA: '',
-                colB: '',
-            }
+            return {} as ParsedExpressionResult
         }
         return {
             operator: operator as Operator,
@@ -48,18 +45,20 @@ const Expression = () => {
     }
 
     const getSparseDataBasedOnColumnName = (columnName: string) => {
-        console.log(columns)
         const columnIndex = columns.findIndex((c) => c.columnId === columnName);
-        if (!columnIndex) return [];
+        if (columnIndex < 0) return [];
 
-        const values: Array<number | string> = []
+        const values: Array<number> = []
         for (let i = 0; i < 8; i++) {
-            values.push(sparseCellData[`${columnIndex}-${i}`])
+            let v = sparseCellData[`${columnIndex}-${i}`]
+            if (typeof v === 'string') v = new Date(v).getTime()
+            values.push(v)
         }
         return values;
     }
 
     const handleExpressionParse = () => {
+        if (parsedExpression === null) return;
         const { colA, colB, operator } = parsedExpression
 
         const columnNameExists = columns.find((c) => c.columnId === newColumnName.toLowerCase().replaceAll(" ", "_"))
@@ -89,32 +88,28 @@ const Expression = () => {
 
     return (
         <div className="expression-container">
-            <div className="col">
-                <h2>Input expression</h2>
-                <p>variables that can be used are the column name in the table as all lowercase and with spaces as underscores. for example</p>
-                <p>Cell Denisty becomes cell_density as a variable name</p>
-                <p>operators: - + / *</p>
+            <h2>Column Operations</h2>
+            <p>Use variable names and operators to create new columns</p>
+            <div className="operators-container card">
+                <h3>Operators</h3>
+                <Tags tags={operators.map((o) => o)} />
             </div>
-            <div className="col">
-                <div className="variables-container">
-                    <h3>Variable names</h3>
-                    <ul className="tags">
-                        {columnVariableNames.map((name) => <li key={name}> <span className="tag" >{name}</span></li>)}
-                    </ul>
-                </div>
+            <div className="variables-container card">
+                <h3>Variable names</h3>
+                <Tags tags={columnVariableNames} />
+            </div>
 
-                <div className="form-container">
-                    <div className="row">
-                        <label htmlFor="expression"><h4>Expression</h4></label>
-                        <input type="text" name="expression" id="expression" onInput={handleInputChange} placeholder="cell_density * volume" />
-                    </div>
-                    <div className="row">
-                        <label htmlFor="newColumnName"><h4>New Column Name</h4></label>
-                        <input type="text" required onInput={handleNewColumnName} placeholder="Cell Count" />
-                    </div>
-                    <div className="row">
-                        <button onClick={handleExpressionParse}>Go</button>
-                    </div>
+            <div className="form-container">
+                <div className="row">
+                    <label htmlFor="expression"><h4>Expression</h4></label>
+                    <input type="text" name="expression" id="expression" onInput={handleInputChange} placeholder="cell_density * volume" />
+                </div>
+                <div className="row">
+                    <label htmlFor="newColumnName"><h4>New Column Name</h4></label>
+                    <input type="text" required onInput={handleNewColumnName} placeholder="Cell Count" />
+                </div>
+                <div className="row">
+                    <button onClick={handleExpressionParse}>Go</button>
                 </div>
             </div>
         </div>
@@ -122,4 +117,4 @@ const Expression = () => {
 
 }
 
-export default Expression
+export default ColOperations

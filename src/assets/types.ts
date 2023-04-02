@@ -1,4 +1,4 @@
-export type Operator = "+" | "-" | "*" | "/";
+import { Operator } from "../utils/math.utils";
 
 export interface ParsedExpressionResult {
   operator: Operator;
@@ -8,5 +8,5 @@ export interface ParsedExpressionResult {
 
 export interface ExpressionEvent {
   newColumnName: string;
-  parseResult: ParsedExpressionResult;
+  parseResult?: ParsedExpressionResult;
 }

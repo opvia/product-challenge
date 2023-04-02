@@ -8,3 +8,43 @@
 .app-title {
   color: $pt-intent-primary;
 }
+
+.form-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+
+  input {
+    padding: 10px;
+  }
+
+  label h4 {
+    margin: 0 0 10px 0;
+  }
+
+  select {
+    padding: 10px;
+  }
+
+  .row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+    input,
+    label {
+      display: block;
+    }
+  }
+
+  .row:last-child {
+    align-self: end;
+  }
+
+  button {
+    padding: 10px;
+  }
+}

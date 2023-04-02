@@ -1,0 +1,113 @@
+import { useRecoilState } from "recoil"
+import { columnData, getSparseRefFromIndexes, tableData, ColumnData } from "../../atoms/tableData"
+import { useState } from "react"
+import './RowOperations.styles.scss'
+
+const RowOperations = () => {
+
+    const [newColumnName, setNewColumnName] = useState<string>('Rate')
+    const [colA, setColA] = useState<string>('time')
+    const [colB, setColB] = useState<string>('cell_density')
+    const [sparseCellData, setSparseCellData] = useRecoilState(tableData)
+    const [columns, setColumns] = useRecoilState(columnData)
+
+    const handleNewColName = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setNewColumnName(e.target.value)
+    }
+
+    const timeBasedColumns = columns.filter((c) => c.columnType === 'time')
+    const dataBasedColumns = columns.filter((c) => c.columnType === 'data')
+
+
+    const handleSelectColA = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setColA(e.target.value)
+    }
+
+    const handleSelectColB = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setColB(e.target.value)
+    }
+
+    const getSparseDataBasedOnColumnName = (columnId: string) => {
+        const columnIndex = columns.findIndex((c) => c.columnId === columnId);
+        if (columnIndex < 0) return new Array<number>;
+
+        const values: Array<number> = []
+        for (let i = 0; i < 8; i++) {
+            let v = sparseCellData[`${columnIndex}-${i}`]
+            if (typeof v === 'string') v = new Date(v).getTime()
+            values.push(v)
+        }
+        return values;
+    }
+
+    const createSparseCellData = (arr: number[], newColumnName: string) => {
+        const newSparseCellData = { ...sparseCellData };
+        const largestIndex = columns.length
+
+        for (let i = 0; i < arr.length; i++) {
+            newSparseCellData[getSparseRefFromIndexes(i, largestIndex)] = arr[i];
+        }
+        setSparseCellData(newSparseCellData)
+        const newColData = { columnName: newColumnName, columnType: "data", columnId: newColumnName.toLowerCase().replaceAll(" ", "_") } as ColumnData
+        setColumns([...columns, newColData])
+    }
+
+    const handleGenerate = () => {
+        const colAIndex = columns.findIndex((c) => c.columnId === colA)
+        const colBIndex = columns.findIndex((c) => c.columnId === colB)
+
+        const colAData = getSparseDataBasedOnColumnName(colA).map((d) => new Date(d).getTime())
+
+        const colBData = getSparseDataBasedOnColumnName(colB)
+
+        const newColumnData = colBData.map((d, i) => {
+            if (i === 0) return 0
+            const rateOfChange = (d - colBData[i - 1]) / ((colAData[i] - colAData[i - 1]) * 1000)
+            return rateOfChange
+        })
+
+        createSparseCellData(newColumnData, newColumnName)
+
+    }
+
+    return (
+        <div className="formula-container">
+
+            <h2>Row Operations</h2>
+            <p>Use pre-defined formulas</p>
+            <div className="form-container">
+                <div className="row">
+                    <label htmlFor="newcolumnname"><h4>New Column Name</h4></label>
+                    <input name="newcolumnname" type="text" required placeholder="Rate" value={newColumnName} onChange={handleNewColName} />
+                </div>
+                <div className="row">
+                    <label><h4>Formula</h4></label>
+                    <button>
+                        <span className="formula-name">Rate of change</span>
+                        <span className="formula-expression">(B[i] - B[i-1]) / ((A[i] - A[i-1]) * 1000)</span>
+                    </button>
+                </div>
+                <div className="row">
+                    <label htmlFor="colA"><h4>A</h4></label>
+                    <select name="colA" id="" onInput={handleSelectColA} required defaultValue={timeBasedColumns[0]['columnId']}>
+                        {timeBasedColumns.map((c) => <option key={c.columnId} value={c.columnId}>{c.columnName}</option>)}
+                    </select>
+                </div>
+                <div className="row">
+                    <label htmlFor="colB"><h4>B</h4></label>
+                    <select name="colB" id="" onInput={handleSelectColB} required>
+                        {dataBasedColumns.map((c) => <option key={c.columnId} value={c.columnId}>{c.columnName}</option>)}
+                    </select>
+                </div>
+                <div className="row">
+                    <label htmlFor="generate"><h4> </h4></label>
+                    <button onClick={handleGenerate}>
+                        Generate
+                    </button>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default RowOperations

@@ -1,4 +1,5 @@
-import { Operator } from "../assets/types";
+export const operators = ["+", "-", "*", "/"] as const;
+export type Operator = typeof operators[number];
 
 export const getOperationFunction = (
     operator: Operator
