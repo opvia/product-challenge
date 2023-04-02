@@ -3,7 +3,7 @@ import { evaluateExpression, Operator, operators } from "../../utils/math.utils"
 import { useState } from "react"
 import './ColOperations.scss'
 import { useRecoilState, useRecoilValue } from "recoil";
-import { ColumnData, columnData, columnNamesAsVariables, getSparseRefFromIndexes, tableData } from "../../atoms/tableData";
+import { ColumnData, columnData, columnNamesAsVariables, getLargestRowLength, getSparseRefFromIndexes, tableData } from "../../atoms/tableData";
 import Tags from "../Tags/Tags";
 
 const ColOperations = () => {
@@ -12,6 +12,7 @@ const ColOperations = () => {
     const [parsedExpression, setParsedExpression] = useState<ParsedExpressionResult | null>(null)
     const [newColumnName, setColumnName] = useState<string>('')
 
+    const largestRowLength = useRecoilValue(getLargestRowLength)
     const columnVariableNames = useRecoilValue(columnNamesAsVariables)
     const [columns, setColumns] = useRecoilState(columnData)
     const [sparseCellData, setSparseCellData] = useRecoilState(tableData)
@@ -49,7 +50,7 @@ const ColOperations = () => {
         if (columnIndex < 0) return [];
 
         const values: Array<number> = []
-        for (let i = 0; i < 8; i++) {
+        for (let i = 0; i < largestRowLength; i++) {
             let v = sparseCellData[`${columnIndex}-${i}`]
             if (typeof v === 'string') v = new Date(v).getTime()
             values.push(v)

@@ -3,13 +3,14 @@ import './OpviaTable.scss'
 import { Column, EditableCell2, Region, RegionCardinality, Regions, Table2 } from '@blueprintjs/table';
 import ColOperations from '../ColOperations/ColOperations';
 import { useRecoilValue } from 'recoil';
-import { columnData, getSparseRefFromIndexes, tableData } from '../../atoms/tableData';
+import { columnData, getLargestRowLength, getSparseRefFromIndexes, tableData } from '../../atoms/tableData';
 import RowOperations from '../RowOperations/RowOperations';
 
 const OpviaTable: React.FC = () => {
 
   const columns = useRecoilValue(columnData)
   const sparseCellData = useRecoilValue(tableData)
+  const largestRowLength = useRecoilValue(getLargestRowLength)
 
   const cellRenderer = (rowIndex: number, columnIndex: number) => {
     const sparsePosition = getSparseRefFromIndexes(rowIndex, columnIndex);
@@ -27,7 +28,7 @@ const OpviaTable: React.FC = () => {
 
   return (
     <div className="opvia-table-container">
-      <Table2 enableRowHeader={true} defaultRowHeight={30} numRows={8} selectionModes={[RegionCardinality.FULL_COLUMNS, RegionCardinality.FULL_ROWS]}>
+      <Table2 enableRowHeader={true} defaultRowHeight={30} numRows={largestRowLength} selectionModes={[RegionCardinality.FULL_COLUMNS, RegionCardinality.FULL_ROWS]}>
         {cols}
       </Table2>
       <div className="forms">

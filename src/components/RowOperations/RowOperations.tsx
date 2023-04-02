@@ -1,5 +1,5 @@
-import { useRecoilState } from "recoil"
-import { columnData, getSparseRefFromIndexes, tableData, ColumnData } from "../../atoms/tableData"
+import { useRecoilState, useRecoilValue } from "recoil"
+import { columnData, getSparseRefFromIndexes, tableData, ColumnData, getLargestRowLength } from "../../atoms/tableData"
 import { useState } from "react"
 import './RowOperations.styles.scss'
 
@@ -10,6 +10,7 @@ const RowOperations = () => {
     const [colB, setColB] = useState<string>('cell_density')
     const [sparseCellData, setSparseCellData] = useRecoilState(tableData)
     const [columns, setColumns] = useRecoilState(columnData)
+    const largestRowLength = useRecoilValue(getLargestRowLength)
 
     const handleNewColName = (e: React.ChangeEvent<HTMLInputElement>) => {
         setNewColumnName(e.target.value)
@@ -32,7 +33,7 @@ const RowOperations = () => {
         if (columnIndex < 0) return new Array<number>;
 
         const values: Array<number> = []
-        for (let i = 0; i < 8; i++) {
+        for (let i = 0; i < largestRowLength; i++) {
             let v = sparseCellData[`${columnIndex}-${i}`]
             if (typeof v === 'string') v = new Date(v).getTime()
             values.push(v)
