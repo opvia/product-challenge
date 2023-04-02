@@ -1,12 +1,11 @@
-import { Operator } from "../utils/math.utils";
-
+import { type Operator } from '../utils/math.utils'
 export interface ParsedExpressionResult {
-  operator: Operator;
-  colA: string;
-  colB: string;
+  operator: Operator
+  colA: string
+  colB: string
 }
 
 export interface ExpressionEvent {
-  newColumnName: string;
-  parseResult?: ParsedExpressionResult;
+  newColumnName: string
+  parseResult?: ParsedExpressionResult
 }

@@ -1,39 +1,39 @@
-import { useState } from "react"
-import { useRecoilState } from "recoil"
+import React, { type ReactElement, useState } from 'react'
+import { useRecoilState } from 'recoil'
 
-import { columnData } from "../../atoms/tableData"
-import useTableDataHelpers from "../../atoms/tableDataHelpers"
+import { columnData } from '../../atoms/tableData'
+import useTableDataHelpers from '../../atoms/tableDataHelpers'
 
 import './RowOperations.styles.scss'
 
-const RowOperations = () => {
-    const [newColumnName, setNewColumnName] = useState<string>('Rate')
-    const [colA, setColA] = useState<string>('time')
-    const [colB, setColB] = useState<string>('cell_density')
-    const [columns, setColumns] = useRecoilState(columnData)
+const RowOperations = (): ReactElement => {
+  const [newColumnName, setNewColumnName] = useState<string>('Rate')
+  const [colA, setColA] = useState<string>('time')
+  const [colB, setColB] = useState<string>('cell_density')
+  const [columns] = useRecoilState(columnData)
 
-    const { createSparseCellData, getSparseDataBasedOnColumnName } = useTableDataHelpers()
+  const { createSparseCellData, getSparseDataBasedOnColumnName } = useTableDataHelpers()
 
-    const timeBasedColumns = columns.filter((c) => c.columnType === 'time')
-    const dataBasedColumns = columns.filter((c) => c.columnType === 'data')
+  const timeBasedColumns = columns.filter((c) => c.columnType === 'time')
+  const dataBasedColumns = columns.filter((c) => c.columnType === 'data')
 
-    const handleNewColName = (e: React.ChangeEvent<HTMLInputElement>) => setNewColumnName(e.target.value)
-    const handleSelectColA = (e: React.ChangeEvent<HTMLSelectElement>) => setColA(e.target.value)
-    const handleSelectColB = (e: React.ChangeEvent<HTMLSelectElement>) => setColB(e.target.value)
+  const handleNewColName = (e: React.ChangeEvent<HTMLInputElement>): void => { setNewColumnName(e.target.value) }
+  const handleSelectColA = (e: React.ChangeEvent<HTMLSelectElement>): void => { setColA(e.target.value) }
+  const handleSelectColB = (e: React.ChangeEvent<HTMLSelectElement>): void => { setColB(e.target.value) }
 
-    const handleGenerate = () => {
-        const colAData = getSparseDataBasedOnColumnName(colA).map((d) => new Date(d).getTime())
-        const colBData = getSparseDataBasedOnColumnName(colB)
+  const handleGenerate = (): void => {
+    const colAData = getSparseDataBasedOnColumnName(colA).map((d) => new Date(d).getTime())
+    const colBData = getSparseDataBasedOnColumnName(colB)
 
-        const calculation = colBData.map((d, i) => {
-            if (i === 0) return 0
-            const rateOfChange = (d - colBData[i - 1]) / ((colAData[i] - colAData[i - 1]) * 1000)
-            return rateOfChange
-        })
-        createSparseCellData(calculation, newColumnName)
-    }
+    const calculation = colBData.map((d, i) => {
+      if (i === 0) return 0
+      const rateOfChange = (d - colBData[i - 1]) / ((colAData[i] - colAData[i - 1]) * 1000)
+      return rateOfChange
+    })
+    createSparseCellData(calculation, newColumnName)
+  }
 
-    return (
+  return (
         <div className="formula-container">
 
             <h2>Row Operations</h2>
@@ -52,7 +52,7 @@ const RowOperations = () => {
                 </div>
                 <div className="row">
                     <label htmlFor="colA"><h4>A</h4></label>
-                    <select name="colA" id="" onInput={handleSelectColA} required defaultValue={timeBasedColumns[0]['columnId']}>
+                    <select name="colA" id="" onInput={handleSelectColA} required defaultValue={timeBasedColumns[0].columnId}>
                         {timeBasedColumns.map((c) => <option key={c.columnId} value={c.columnId}>{c.columnName}</option>)}
                     </select>
                 </div>
@@ -70,7 +70,7 @@ const RowOperations = () => {
                 </div>
             </div>
         </div>
-    )
+  )
 }
 
 export default RowOperations

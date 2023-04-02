@@ -1,14 +1,14 @@
-import { createRoot } from 'react-dom/client';
-import { HotkeysProvider } from '@blueprintjs/core';
+import React, { createRoot } from 'react-dom/client'
+import { HotkeysProvider } from '@blueprintjs/core'
 import {
-  RecoilRoot,
-} from 'recoil';
-import App from './App';
-import 'normalize.css';
-import '@blueprintjs/core/lib/css/blueprint.css';
-import './main.css';
+  RecoilRoot
+} from 'recoil'
+import App from './App'
+import 'normalize.css'
+import '@blueprintjs/core/lib/css/blueprint.css'
+import './main.css'
 
-const root = createRoot(document.getElementById('root') as HTMLElement);
+const root = createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
   <HotkeysProvider>
@@ -16,4 +16,4 @@ root.render(
       <App />
     </RecoilRoot>
   </HotkeysProvider>
-);
+)

@@ -1,54 +1,54 @@
-import { useState } from "react"
-import { useRecoilState, useRecoilValue } from "recoil";
+import React, { useState, type ReactElement } from 'react'
+import { useRecoilState, useRecoilValue } from 'recoil'
 
-import { ParsedExpressionResult } from "../../assets/types";
-import { evaluateExpression, mathExpressionParser, operators } from "../../utils/math.utils";
-import { columnData, columnNamesAsVariables, } from "../../atoms/tableData";
-import Tags from "../Tags/Tags";
-import useTableDataHelpers from "../../atoms/tableDataHelpers";
+import { type ParsedExpressionResult } from '../../assets/types'
+import { evaluateExpression, mathExpressionParser, operators } from '../../utils/math.utils'
+import { columnData, columnNamesAsVariables } from '../../atoms/tableData'
+import Tags from '../Tags/Tags'
+import useTableDataHelpers from '../../atoms/tableDataHelpers'
 
 import './ColOperations.scss'
 
-const ColOperations = () => {
+const ColOperations = (): ReactElement => {
+  const [, setExpression] = useState<string>('')
+  const [parsedExpression, setParsedExpression] = useState<ParsedExpressionResult | null>(null)
+  const [newColumnName, setColumnName] = useState<string>('')
 
-    const [expression, setExpression] = useState<string>('')
-    const [parsedExpression, setParsedExpression] = useState<ParsedExpressionResult | null>(null)
-    const [newColumnName, setColumnName] = useState<string>('')
+  const columnVariableNames = useRecoilValue(columnNamesAsVariables)
+  const [columns] = useRecoilState(columnData)
 
-    const columnVariableNames = useRecoilValue(columnNamesAsVariables)
-    const [columns, setColumns] = useRecoilState(columnData)
+  const { createSparseCellData, getSparseDataBasedOnColumnName } = useTableDataHelpers()
 
-    const { createSparseCellData, getSparseDataBasedOnColumnName } = useTableDataHelpers()
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setExpression(e.target.value.trim())
+    const result = mathExpressionParser(e.target.value)
+    if (result === null) return
+    const { colA, colB, operator } = result
+    if (colA !== '' && colB !== '') {
+      setParsedExpression({ operator, colA, colB })
+    }
+  }
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setExpression(e.target.value.trim())
-        const { operator, colA, colB } = mathExpressionParser(e.target.value);
-        if (operator && colA && colB) {
-            setParsedExpression({ operator, colA, colB })
-        }
+  const handleNewColumnName = (e: React.ChangeEvent<HTMLInputElement>): void => { setColumnName(e.target.value) }
+
+  const handleExpressionParse = (): void => {
+    if (parsedExpression === null) return
+    const { colA, colB, operator } = parsedExpression
+
+    const columnNameExists = columns.find((c) => c.columnId === newColumnName.toLowerCase().replaceAll(' ', '_'))
+    if (columnNameExists != null) {
+      alert('Column name already exists')
+      return
     }
 
-    const handleNewColumnName = (e: React.ChangeEvent<HTMLInputElement>) => setColumnName(e.target.value)
+    const colAData = getSparseDataBasedOnColumnName(colA)
+    const colBData = getSparseDataBasedOnColumnName(colB)
 
-    const handleExpressionParse = () => {
-        if (parsedExpression === null) return;
-        const { colA, colB, operator } = parsedExpression
+    const res = evaluateExpression(colAData, colBData, operator)
+    createSparseCellData(res, newColumnName)
+  }
 
-        const columnNameExists = columns.find((c) => c.columnId === newColumnName.toLowerCase().replaceAll(" ", "_"))
-        if (columnNameExists) {
-            alert("Column name already exists")
-            return;
-        }
-
-        const colAData = getSparseDataBasedOnColumnName(colA)
-        const colBData = getSparseDataBasedOnColumnName(colB)
-
-        const res = evaluateExpression(colAData, colBData, operator)
-        createSparseCellData(res, newColumnName)
-    }
-
-
-    return (
+  return (
         <div className="expression-container">
             <h2>Column Operations</h2>
             <p>Use variable names and operators to create new columns</p>
@@ -75,8 +75,7 @@ const ColOperations = () => {
                 </div>
             </div>
         </div>
-    )
-
+  )
 }
 
 export default ColOperations
