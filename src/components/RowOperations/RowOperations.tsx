@@ -7,7 +7,6 @@ import useTableDataHelpers from "../../atoms/tableDataHelpers"
 import './RowOperations.styles.scss'
 
 const RowOperations = () => {
-
     const [newColumnName, setNewColumnName] = useState<string>('Rate')
     const [colA, setColA] = useState<string>('time')
     const [colB, setColB] = useState<string>('cell_density')
