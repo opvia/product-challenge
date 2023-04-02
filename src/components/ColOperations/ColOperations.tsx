@@ -30,14 +30,19 @@ const ColOperations = (): ReactElement => {
   const handleNewColumnName = (e: React.ChangeEvent<HTMLInputElement>): void => { setColumnName(e.target.value) }
 
   const handleExpressionParse = (): void => {
-    if (parsedExpression === null) return
-    const { colA, colB, operator } = parsedExpression
+    if (newColumnName === '') {
+      alert('Please enter a new column name')
+      return
+    }
 
     const columnNameExists = columns.find((c) => c.columnId === newColumnName.toLowerCase().replaceAll(' ', '_'))
     if (columnNameExists != null) {
       alert('Column name already exists')
       return
     }
+
+    if (parsedExpression === null) return
+    const { colA, colB, operator } = parsedExpression
 
     const colAData = getSparseDataBasedOnColumnName(colA)
     const colBData = getSparseDataBasedOnColumnName(colB)
@@ -58,7 +63,6 @@ const ColOperations = (): ReactElement => {
                 <h3>Variable names</h3>
                 <Tags tags={columnVariableNames} />
             </div>
-
             <div className="form-container">
                 <div className="row">
                     <label htmlFor="expression"><h4>Expression</h4></label>
@@ -69,7 +73,7 @@ const ColOperations = (): ReactElement => {
                     <input type="text" required onInput={handleNewColumnName} placeholder="Cell Count" />
                 </div>
                 <div className="row">
-                    <button onClick={handleExpressionParse}>Go</button>
+                    <button onClick={handleExpressionParse}>Generate</button>
                 </div>
             </div>
         </div>

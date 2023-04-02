@@ -8,4 +8,15 @@
     h2 {
         margin-top: 0px;
     }
+
+    .lower-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: end;
+
+        > div:not(:last-child) {
+            margin-right: 10px;
+        }
+    }
 }
