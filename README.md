@@ -42,3 +42,26 @@ Ran out of time? Document any features that you'd like to have built.
 If you have any questions, or anything is unclear please email Jack at `jack.rans@opvia.bio`
 
 
+
+## More features I would like and report
+
+Whilst the basic functionality is working I would've liked to approach it ideally in a different way.
+
+#### Better parsers / evaluators  
+
+perhaps use cortexJS to parse the input which would've produced a better AST. I can then fill in the variables with a map<columnId,variableId>
+
+perhaps being able to use CortexJS's LiveMath package would've been good for the input and certainly for Column based math, it would've been
+fairly easy to do. However when calculating the row based formulas, I think it would struggle to understand the concept of a loop and hence why I resorted to a button for the row based calculation
+
+#### Using BlueprintJS -> Table -> onSelected 
+
+This produces a "region" as they call it. you can use cardinality to see if you've selected rows, cells, columns or a table and gives back the respective indices that rectangle so to speak where each corner is a index of a column or row. Using this, one could enable a method of input like Microsite Excel. 
+
+#### Deleting columns and rows
+
+I Think it would've been nice to delete columns and rows
+
+#### Overall interface layout
+
+I would've liked to put the forms closer to the table to make it look all as one.
