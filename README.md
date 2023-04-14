@@ -12,7 +12,7 @@ This is our only opportunity to see what you can build so we weight it very high
 2. We have a prettier config to help you format your code better, but please add eslint if you wish.
 3. Also feel free to restructure the code base to make it better and add missing types wherever you see fit to gain some brownie points. 🎉
 4. Take your time to complete the 'Opvia product problem' below. It's up to you how you go about this!
-5. Invite _hfmw_ and _jrans_ to your own repo with your solution when you're done
+5. Invite _jrans_ and _OliverWales_ to your own repo with your solution when you're done
 
 ## Opvia product problem
 
@@ -21,9 +21,11 @@ Here's the situation: scientists are using Opvia to store all their data in a st
 Make it possible for users to add `calculation columns`:
 
 - The user should be able to add new derived properties of a record by writing a formula that can specify other columns to calculate with.
-- This is the functionality required you've identified with the user:
-  - Column based basic maths (addition, multiplication etc.) (e.g. multiplying cell density column and volume column -> cell count)
-  - Row based formula (e.g. show the rate of change of the calculated cell count)
+- You've identified with the user that these formulas require basic math operations (addition, multiplication etc.) (e.g. multiplying cell density column and volume column -> cell count)
+
+Make it possible for users to add `table aggregations`:
+
+- Provide a way for a user to calculate aggregate values, for instance the mean volume across all records, or the sum of all the cell counts.
 
 ### What we're looking for
 
