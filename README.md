@@ -31,6 +31,8 @@ Make it possible for users to add `table aggregations`:
 
 Something that meets the above minimal requirements and can act as a starting point to get more feedback on.
 
+We are not looking for an Excel copy. These are a table of records not a spreadsheet.
+
 Unsure whether to submit? Would you happily sit down with a scientist and show them what you've built? Would what you've showed them make them more excited about using Opvia?
 
 Ran out of time? Document any features that you'd like to have built.
