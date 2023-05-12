@@ -18,9 +18,6 @@ const originalColumns = [
 
 const OpviaTable: React.FC = () => {
   const [columns, setCols] = React.useState(originalColumns);
-  const [editableColumnHeader, setEditableColumnHeader] = React.useState<
-    number | null
-  >(null);
 
   const onAddColumn = (index: number) => {
     return (direction: 1 | -1) => {
@@ -35,40 +32,26 @@ const OpviaTable: React.FC = () => {
     };
   };
 
-  const columnNameRenderer = (_name: string, index?: number) => {
-    if (index == undefined || index === null) return <span></span>;
-    if (editableColumnHeader !== index) {
-      return <span>{columns[index].columnName}</span>;
-    }
-    return (
-      <div id={`editable-name`}>
-        <EditableName
-          intent="primary"
-          name={columns[index ?? 0].columnName}
-          onChange={(value) => {
-            const copy = [...columns];
-            copy[index ?? 0].columnName = value;
-            setCols(copy);
-          }}
-          onConfirm={() => {
-            setEditableColumnHeader(null);
-          }}
-          onCancel={() => {
-            setEditableColumnHeader(null);
-          }}
-        />
-      </div>
-    );
+  const onColumnHeaderChange = (index: number) => {
+    return (value: string) => {
+      const copy = [...columns];
+      copy[index].columnName = value;
+      setCols(copy);
+    };
   };
 
   const columnHeaderCellRenderer = (index?: number) => {
+    if (index === undefined) return (<></>);
     return (
       <ColumnHeaderCell2
-        nameRenderer={columnNameRenderer}
+        nameRenderer={(_name, index) => (
+          <EditableName
+            name={columns[index!].columnName}
+            onChange={onColumnHeaderChange(index!)}
+        />)}
         menuRenderer={(index) => (
           <ColumnMenu
-            onAddColumn={onAddColumn(index ?? 0)}
-            onEditName={() => setEditableColumnHeader(index ?? 0)}
+            onAddColumn={onAddColumn(index!)}
           ></ColumnMenu>
         )}
       />
@@ -94,7 +77,7 @@ const OpviaTable: React.FC = () => {
 
   return (
     <>
-      <Table2 defaultRowHeight={30} numRows={8}>
+      <Table2 defaultRowHeight={30} numRows={8} enableColumnInteractionBar >
         {cols}
       </Table2>
     </>
