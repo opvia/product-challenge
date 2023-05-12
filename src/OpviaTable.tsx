@@ -4,6 +4,7 @@ import {
   Column,
   ColumnHeaderCell2,
   EditableCell2,
+  EditableName,
   Table2,
 } from '@blueprintjs/table';
 import { dummyTableData } from './data/dummyData';
@@ -17,6 +18,9 @@ const originalColumns = [
 
 const OpviaTable: React.FC = () => {
   const [columns, setCols] = React.useState(originalColumns);
+  const [editableColumnHeader, setEditableColumnHeader] = React.useState<
+    number | null
+  >(null);
 
   const onAddColumn = (index: number) => {
     return (direction: 1 | -1) => {
@@ -31,20 +35,51 @@ const OpviaTable: React.FC = () => {
     };
   };
 
+  const columnNameRenderer = (_name: string, index?: number) => {
+    if (index == undefined || index === null) return <span></span>;
+    if (editableColumnHeader !== index) {
+      return <span>{columns[index].columnName}</span>;
+    }
+    return (
+      <div id={`editable-name`}>
+        <EditableName
+          intent="primary"
+          name={columns[index ?? 0].columnName}
+          onChange={(value) => {
+            const copy = [...columns];
+            copy[index ?? 0].columnName = value;
+            setCols(copy);
+          }}
+          onConfirm={() => {
+            setEditableColumnHeader(null);
+          }}
+          onCancel={() => {
+            setEditableColumnHeader(null);
+          }}
+        />
+      </div>
+    );
+  };
+
   const columnHeaderCellRenderer = (index?: number) => {
     return (
       <ColumnHeaderCell2
-      name={columns[index ?? 0].columnName}
-      menuRenderer= {(index) => 
-        <ColumnMenu onAddColumn={onAddColumn(index ?? 0)}></ColumnMenu>
-      }
+        nameRenderer={columnNameRenderer}
+        menuRenderer={(index) => (
+          <ColumnMenu
+            onAddColumn={onAddColumn(index ?? 0)}
+            onEditName={() => setEditableColumnHeader(index ?? 0)}
+          ></ColumnMenu>
+        )}
       />
     );
   };
 
   const cellRenderer = (rowIndex: number, columnIndex: number) => {
     const columnId = columns[columnIndex].columnId;
-    const value = dummyTableData[columnId] ? dummyTableData[columnId][rowIndex] : '';
+    const value = dummyTableData[columnId]
+      ? dummyTableData[columnId][rowIndex]
+      : '';
     return <EditableCell2 value={String(value)} />;
   };
 
