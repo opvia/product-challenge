@@ -32,7 +32,15 @@ const OpviaTable: React.FC = () => {
     };
   };
 
-  const onColumnHeaderChange = (index: number) => {
+  const onRemoveColumn = (index: number) => {
+    return () => {
+      const copy = [...columns];
+      copy.splice(index!, 1);
+      setCols(copy);
+    };
+  };
+
+  const onColumnNameChange = (index: number) => {
     return (value: string) => {
       const copy = [...columns];
       copy[index].columnName = value;
@@ -47,11 +55,12 @@ const OpviaTable: React.FC = () => {
         nameRenderer={(_name, index) => (
           <EditableName
             name={columns[index!].columnName}
-            onChange={onColumnHeaderChange(index!)}
+            onChange={onColumnNameChange(index!)}
         />)}
         menuRenderer={(index) => (
           <ColumnMenu
             onAddColumn={onAddColumn(index!)}
+            onRemoveColumn={onRemoveColumn(index!)}
           ></ColumnMenu>
         )}
       />

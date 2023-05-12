@@ -2,6 +2,7 @@ import { Menu, MenuItem } from '@blueprintjs/core';
 
 type Props = {
   onAddColumn: (direction: 1 | -1) => void;
+  onRemoveColumn: () => void;
 };
 
 export default function ColumnMenu(props: Props) {
@@ -19,6 +20,13 @@ export default function ColumnMenu(props: Props) {
         text="Add column right"
         onClick={() => {
           props.onAddColumn(1);
+        }}
+      />
+      <MenuItem
+        icon="trash"
+        text="Remove column"
+        onClick={() => {
+          props.onRemoveColumn();
         }}
       />
     </Menu>
