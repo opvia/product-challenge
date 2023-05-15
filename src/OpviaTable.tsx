@@ -10,50 +10,80 @@ import {
 } from '@blueprintjs/table';
 import { dummyTableData } from './data/dummyData';
 import ColumnMenu from './ColumnMenu';
-import { calculate, isAttemptingFormula } from './utils/calculator';
+import {
+  calculateForCell,
+  calculateForColumn,
+  isAttemptingFormula,
+} from './utils/calculator';
+import { FormulaDialog } from './FormulaDialog';
 
-const originalColumns = [
+type DataColumn = {
+  columnName: string;
+  columnType: string;
+  columnId: string;
+  columnFormula?: string;
+};
+
+const originalColumns: DataColumn[] = [
   { columnName: 'Time', columnType: 'time', columnId: 'time_col' },
   { columnName: 'Cell Density', columnType: 'data', columnId: 'cell_density' },
   { columnName: 'Volume', columnType: 'data', columnId: 'volume' },
 ];
 
-type Data = typeof dummyTableData;
-
 const OpviaTable: React.FC = () => {
   const [data, setData] = React.useState(dummyTableData);
   const [columns, setCols] = React.useState(originalColumns);
+  const [editingColumnFormula, setEditingColumnFormula] =
+    React.useState<number>();
   const numRows = dummyTableData[Object.keys(dummyTableData)[0]].length;
 
-  const onAddColumn = (index: number) => {
-    return (direction: 1 | -1) => {
-      const pos = direction === 1 ? index + 1 : index;
-      const copy = [...columns];
-      const columnId = uid(16);
-      copy.splice(pos, 0, {
-        columnName: '',
-        columnType: 'data',
-        columnId,
-      });
-      setData({ ...data, [columnId]: new Array(numRows).fill(' ') });
-      setCols(copy);
-    };
+  const onAddColumn = (index: number) => (direction: 1 | -1) => {
+    const pos = direction === 1 ? index + 1 : index;
+    const copy = [...columns];
+    const columnId = uid(16);
+    copy.splice(pos, 0, {
+      columnName: '',
+      columnType: 'data',
+      columnId,
+    });
+    setData({ ...data, [columnId]: new Array(numRows).fill(' ') });
+    setCols(copy);
   };
 
-  const onRemoveColumn = (index: number) => {
-    return () => {
-      const copy = [...columns];
-      copy.splice(index!, 1);
-      setCols(copy);
-    };
+  const onRemoveColumn = (index: number) => () => {
+    const copy = [...columns];
+    copy.splice(index!, 1);
+    setCols(copy);
   };
 
-  const onColumnNameChange = (index: number) => {
-    return (value: string) => {
-      const copy = [...columns];
-      copy[index].columnName = value;
-      setCols(copy);
-    };
+  const onColumnNameChange = (index: number) => (value: string) => {
+    const copy = [...columns];
+    copy[index].columnName = value;
+    setCols(copy);
+  };
+
+  const onAddCalculation = (index: number) => () => {
+    setEditingColumnFormula(index);
+  };
+
+  const onFormulaSubmit = (formula: string) => {
+    // Save formula in column
+    const columnsCopy = [...columns];
+    const columnCopy = columnsCopy[editingColumnFormula!];
+    columnCopy.columnFormula = formula;
+    setCols(columnsCopy);
+    setEditingColumnFormula(undefined);
+    // Do the calculation for cells
+    const columnId = columnCopy.columnId;
+    const matrix = columns.map((col) => data[col.columnId]);
+    const dataCopy = { ...data };
+    if (dataCopy[columnId] === undefined) {
+      dataCopy[columnId] = [];
+    }
+    dataCopy[columnId] = dataCopy[columnId].map((_v, i) =>
+      calculateForColumn(matrix, formula, i),
+    );
+    setData(dataCopy);
   };
 
   const columnHeaderCellRenderer = (index?: number) => {
@@ -70,6 +100,7 @@ const OpviaTable: React.FC = () => {
           <ColumnMenu
             onAddColumn={onAddColumn(index!)}
             onRemoveColumn={onRemoveColumn(index!)}
+            onAddCalculation={onAddCalculation(index!)}
           ></ColumnMenu>
         )}
       />
@@ -98,7 +129,7 @@ const OpviaTable: React.FC = () => {
         if (copy[columnId] === undefined) {
           copy[columnId] = [];
         }
-        copy[columnId][rowIndex] = calculate(matrix, formula);
+        copy[columnId][rowIndex] = calculateForCell(matrix, formula);
         setData(copy);
       }
     };
@@ -113,6 +144,11 @@ const OpviaTable: React.FC = () => {
         onConfirm={onCellConfirm(columnId, rowIndex)}
       />
     );
+  };
+
+  const getColumnFormula = (index?: number) => {
+    if (index === undefined) return '';
+    return columns[index].columnFormula || '';
   };
 
   const cols = columns.map((column) => (
@@ -134,6 +170,12 @@ const OpviaTable: React.FC = () => {
       >
         {cols}
       </Table2>
+      <FormulaDialog
+        isOpen={editingColumnFormula !== undefined}
+        onClose={() => setEditingColumnFormula(undefined)}
+        onSubmit={onFormulaSubmit}
+        formula={getColumnFormula(editingColumnFormula)}
+      ></FormulaDialog>
     </>
   );
 };
