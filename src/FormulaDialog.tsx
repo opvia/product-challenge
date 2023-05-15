@@ -44,6 +44,7 @@ export const FormulaDialog = ({
           <h4>Write the formula</h4>
           <p>Columns can be specified by letter, like A, B, C ...</p>
           <p>Allowed operators: + - * /</p>
+          <p>Allowed functions: SUM, AVERAGE, MIN, MAX, MEDIAN</p>
           <br />
           <ControlGroup fill={true} vertical={false}>
             <InputGroup
