@@ -113,7 +113,8 @@ const cellToIndex = (cell: string) => {
 const parseColumns = (formula: string, data: DataMatrix, row: number) => {
   const columns: string[] = formula.match(/[A-Z]/g) || [];
   return columns.reduce((acc, curr) => {
-    return acc.replace(curr, data[columnToIndex(curr)][row].toString());
+    const value = parseFloat(data[columnToIndex(curr)][row].toString());
+    return acc.replace(curr, value.toString());
   }, formula);
 };
 
