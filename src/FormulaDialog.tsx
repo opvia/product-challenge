@@ -7,13 +7,6 @@ import {
   Button,
 } from '@blueprintjs/core';
 
-type FormulaDialogProps = {
-  onClose?: () => void;
-  onSubmit: (formula: string) => void;
-  isOpen?: boolean;
-  formula?: string;
-};
-
 const wrapperStyle: React.CSSProperties = {
   margin: 'auto',
   width: '50%',
@@ -21,12 +14,19 @@ const wrapperStyle: React.CSSProperties = {
   marginTop: '2rem',
 };
 
-export const FormulaDialog = ({
+type FormulaDialogProps = {
+  onClose?: () => void;
+  onSubmit: (formula: string) => void;
+  isOpen?: boolean;
+  formula?: string;
+};
+
+const FormulaDialog: React.FC<FormulaDialogProps> = ({
   onClose,
   isOpen,
   onSubmit,
   formula = '',
-}: FormulaDialogProps) => {
+}) => {
   const [value, setValue] = React.useState(formula);
 
   React.useEffect(() => {
@@ -63,3 +63,5 @@ export const FormulaDialog = ({
     </Overlay>
   );
 };
+
+export default FormulaDialog;

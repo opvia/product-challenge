@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { uid } from 'uid';
-
 import {
   Column,
   ColumnHeaderCell2,
@@ -8,14 +7,13 @@ import {
   EditableName,
   Table2,
 } from '@blueprintjs/table';
-import { dummyTableData } from './data/dummyData';
-import ColumnMenu from './ColumnMenu';
 import {
   calculateForCell,
   calculateForColumn,
   isAttemptingFormula,
 } from './utils/calculator';
-import { FormulaDialog } from './FormulaDialog';
+import ColumnMenu from './ColumnMenu';
+import FormulaDialog from './FormulaDialog';
 
 type DataColumn = {
   columnName: string;
@@ -24,18 +22,19 @@ type DataColumn = {
   columnFormula?: string;
 };
 
-const originalColumns: DataColumn[] = [
-  { columnName: 'Time', columnType: 'time', columnId: 'time_col' },
-  { columnName: 'Cell Density', columnType: 'data', columnId: 'cell_density' },
-  { columnName: 'Volume', columnType: 'data', columnId: 'volume' },
-];
+type Data = Record<string, string[] | number[]>;
 
-const OpviaTable: React.FC = () => {
-  const [data, setData] = React.useState(dummyTableData);
-  const [columns, setCols] = React.useState(originalColumns);
+type OpviaTableProps = {
+  data: Data;
+  columns: DataColumn[];
+};
+
+const OpviaTable: React.FC<OpviaTableProps> = (props) => {
+  const [data, setData] = React.useState<Data>(props.data);
+  const [columns, setCols] = React.useState<DataColumn[]>(props.columns);
   const [editingColumnFormula, setEditingColumnFormula] =
     React.useState<number>();
-  const numRows = dummyTableData[Object.keys(dummyTableData)[0]].length;
+  const numRows = data[Object.keys(data)[0]].length;
 
   const onAddColumn = (index: number) => (direction: 1 | -1) => {
     const pos = direction === 1 ? index + 1 : index;

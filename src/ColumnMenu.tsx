@@ -1,12 +1,12 @@
 import { Menu, MenuItem } from '@blueprintjs/core';
 
-type Props = {
+type ColumnMenuProps = {
   onAddColumn: (direction: 1 | -1) => void;
   onRemoveColumn: () => void;
   onAddCalculation: () => void;
 };
 
-export default function ColumnMenu(props: Props) {
+const ColumnMenu: React.FC<ColumnMenuProps> = (props) => {
   return (
     <Menu>
       <MenuItem
@@ -40,3 +40,5 @@ export default function ColumnMenu(props: Props) {
     </Menu>
   );
 }
+
+export default ColumnMenu;
