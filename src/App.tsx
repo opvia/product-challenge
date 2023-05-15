@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
-import OpviaTable from './OpviaTable';
+import OpviaTable, { Data, DataColumn } from './OpviaTable';
 import { dummyTableData } from './data/dummyData';
+import { saveInStorage, getFromStorage } from './utils/storage';
 
 const originalColumns = [
   { columnName: 'Time', columnType: 'time', columnId: 'time_col' },
@@ -10,11 +11,19 @@ const originalColumns = [
 ];
 
 const App: React.FC = () => {
+  const data = getFromStorage<Data>('data') || dummyTableData;
+  const columns = getFromStorage<DataColumn[]>('columns') ?? originalColumns;
+
   return (
     <div className="App">
-      <OpviaTable columns={originalColumns} data={dummyTableData}/>
+      <OpviaTable columns={columns} data={data} onChange={onChangeTable}/>
     </div>
   );
+};
+
+const onChangeTable = (data: any, columns: any) => {
+  saveInStorage('columns', columns);
+  saveInStorage('data', data);
 };
 
 export default App;

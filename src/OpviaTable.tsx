@@ -16,18 +16,19 @@ import {
 import ColumnMenu from './ColumnMenu';
 import FormulaDialog from './FormulaDialog';
 
-type DataColumn = {
+export type DataColumn = {
   columnName: string;
   columnType: string;
   columnId: string;
   columnFormula?: string;
 };
 
-type Data = Record<string, string[] | number[]>;
+export type Data = Record<string, string[] | number[]>;
 
 type OpviaTableProps = {
   data: Data;
   columns: DataColumn[];
+  onChange?: (data: Data, columns: DataColumn[]) => void;
 };
 
 const OpviaTable: React.FC<OpviaTableProps> = (props) => {
@@ -36,6 +37,12 @@ const OpviaTable: React.FC<OpviaTableProps> = (props) => {
   const [editingColumnFormula, setEditingColumnFormula] =
     React.useState<number>();
   const numRows = data[Object.keys(data)[0]].length;
+
+  React.useEffect(() => {
+    if (props.onChange) {
+      props.onChange(data, columns);
+    }
+  }, [data, columns]);
 
   const onAddColumn = (index: number) => (direction: 1 | -1) => {
     const pos = direction === 1 ? index + 1 : index;
