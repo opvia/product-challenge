@@ -7,35 +7,27 @@ export const isAttemptingFormula = (value: string) => {
 };
 
 export const calculateForCell = (data: DataMatrix, formula: string) => {
-  if (!isValidFormulaForCell(formula)) {
+  if (!isValidFormula(formula, true)) {
     return '#NON_VALID_FORMULA';
   }
+  const parsedFormula = parseCells(formula, data);
+  return evaluate(parsedFormula);
+};
+
+const parseCells = (formula: string, data: DataMatrix) => {
   const cells: string[] = formula.match(/[A-Z]\d+/g) || [];
-  const operators = getOperators(formula);
-  if (operators.length === 0) {
-    return getCellValue(data, cells[0]);
-  }
   const values = cells.map((cell) => {
     return getCellValue(data, cell);
   });
   const parsedFormula = cells.reduce((acc, curr, i) => {
     return acc.replace(curr, values[i].toString());
   }, formula);
-  return evaluate(parsedFormula);
-};
-
-const getOperators = (formula: string) => {
-  return formula.match(/[+\-*/]/g) || [];
+  return parsedFormula;
 };
 
 const getCellValue = (data: DataMatrix, cell: string) => {
   const { column, row } = cellToIndex(cell);
   return parseFloat(data[column][row].toString());
-};
-
-const isValidFormulaForCell = (formula: string) => {
-  const exp = new RegExp('^\\s*[A-Z]*\\d+\\s*([\\+*-\\/]\\s*[A-Z]*\\d+\\s*)*$');
-  return formula.match(exp);
 };
 
 const cellToIndex = (cell: string) => {
@@ -51,27 +43,40 @@ export const calculateForColumn = (
   formula: string,
   row: number,
 ) => {
-  if (!isValidFormulaForColumn(formula)) {
+  if (!isValidFormula(formula)) {
     return '#NON_VALID_FORMULA';
   }
+  const parsed1 = parseCells(formula, data);
+  const parsed2 = parseColumns(parsed1, data, row);
+  return evaluate(parsed2);
+};
+
+const parseColumns = (
+  formula: string,
+  data: DataMatrix,
+  row: number,
+) => {
   const columns: string[] = formula.match(/[A-Z]/g) || [];
-  const operators = getOperators(formula);
-  if (operators.length === 0) {
-    return data[columnToIndex(columns[0])][row];
-  }
-  const parsedFormula = columns.reduce((acc, curr, i) => {
+  return columns.reduce((acc, curr) => {
     return acc.replace(curr, data[columnToIndex(curr)][row].toString());
   }, formula);
-  return evaluate(parsedFormula);
 };
 
 const columnToIndex = (column: string) => {
   return column.charCodeAt(0) - 65;
 };
 
-const isValidFormulaForColumn = (formula: string) => {
+const isValidFormula = (formula: string, isForCell = false) => {
+  const operators = '[+\\-*\\/]';
+  const columns = '[A-Z]';
+  const cells = '[A-Z]\\d+';
+  const numbers = '\\d+';
+  // Columns are not allowed in cell formulas
+  const operands = isForCell
+    ? `(${cells}|${numbers})`
+    : `(${columns}|${cells}|${numbers})`;
   const exp = new RegExp(
-    '^\\s*[A-Z]+|\\d+\\s*([\\+*-\\/]\\s*([A-Z]+|\\d+)\\s*)*$',
+    `^\\s*(${operands})\\s*(${operators}\\s*(${operands})\\s*)*\\s*$`,
   );
   return formula.match(exp);
 };
