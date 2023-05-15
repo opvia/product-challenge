@@ -5,8 +5,13 @@ export type DataMatrix = (string | number)[][];
 const aggregateFnNames = ['SUM', 'AVERAGE', 'MAX', 'MIN', 'MEDIAN'];
 const aggregateFnRegexStr = `(${aggregateFnNames.join('|')})\\s*\\(\\s*[A-Z]\\s*\\)`;
 
-export const isAttemptingFormula = (value: string) => {
+export const isFormulaInput = (value: string) => {
   return value.trim().startsWith('=');
+};
+
+export const getFormulaFromInput = (value: string) => {
+  // Remove spaces and the '=' sign from the formula input
+  return value.trim().slice(1);
 };
 
 export const calculateForColumn = (

@@ -10,8 +10,9 @@ import {
 import {
   calculateForCell,
   calculateForColumn,
-  isAttemptingFormula,
-} from './utils/calculator';
+  getFormulaFromInput,
+  isFormulaInput,
+} from './utils/tableCalculator';
 import ColumnMenu from './ColumnMenu';
 import FormulaDialog from './FormulaDialog';
 
@@ -120,9 +121,8 @@ const OpviaTable: React.FC<OpviaTableProps> = (props) => {
 
   const onCellConfirm =
     (columnId: string, rowIndex: number) => (value: string) => {
-      if (isAttemptingFormula(value)) {
-        // Remove spaces and the '=' sign from the formula
-        const formula = value.trim().slice(1);
+      if (isFormulaInput(value)) {
+        const formula = getFormulaFromInput(value);
         const matrix = columns.map((col) => data[col.columnId]);
         const copy = { ...data };
         if (copy[columnId] === undefined) {
