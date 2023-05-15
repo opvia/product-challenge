@@ -3,18 +3,20 @@ import { uid } from 'uid';
 import {
   Column,
   ColumnHeaderCell2,
-  EditableCell2,
   EditableName,
   Table2,
 } from '@blueprintjs/table';
 import {
   calculateForCell,
   calculateForColumn,
+  createMatrix,
   getFormulaFromInput,
   isFormulaInput,
 } from './utils/tableCalculator';
 import ColumnMenu from './ColumnMenu';
 import FormulaDialog from './FormulaDialog';
+// Using custom EditableCell2 component to allow for custom cell editing
+import { EditableCell2 } from './lib/blueprint-table/src/cell/EditableCell2';
 
 export type DataColumn = {
   columnName: string;
@@ -37,6 +39,9 @@ const OpviaTable: React.FC<OpviaTableProps> = (props) => {
   const [editingColumnFormula, setEditingColumnFormula] =
     React.useState<number>();
   const numRows = data[Object.keys(data)[0]].length;
+  const [formulaMatrix, setFormulaMatrix] = React.useState<string[][]>(
+    createMatrix(numRows, columns.length, ''),
+  );
 
   React.useEffect(() => {
     if (props.onChange) {
@@ -73,7 +78,7 @@ const OpviaTable: React.FC<OpviaTableProps> = (props) => {
     setEditingColumnFormula(index);
   };
 
-  const onFormulaSubmit = (formula: string) => {
+  const onColumnFormulaSubmit = (formula: string) => {
     // Save formula in column
     const columnsCopy = [...columns];
     const columnCopy = columnsCopy[editingColumnFormula!];
@@ -126,17 +131,35 @@ const OpviaTable: React.FC<OpviaTableProps> = (props) => {
     };
   };
 
+  const onCellFormulaSubmit = (
+    value: string,
+    rowIndex: number,
+    columnIndex: number,
+  ) => {
+    const formula = getFormulaFromInput(value);
+    const columnId = columns[columnIndex].columnId;
+    const matrix = columns.map((col) => data[col.columnId]);
+    const copy = { ...data };
+    if (copy[columnId] === undefined) {
+      copy[columnId] = [];
+    }
+    copy[columnId][rowIndex] = calculateForCell(matrix, formula);
+    setData(copy);
+  };
+
   const onCellConfirm =
-    (columnId: string, rowIndex: number) => (value: string) => {
+    (rowIndex: number, columnIndex: number) => (value: string) => {
       if (isFormulaInput(value)) {
-        const formula = getFormulaFromInput(value);
-        const matrix = columns.map((col) => data[col.columnId]);
-        const copy = { ...data };
-        if (copy[columnId] === undefined) {
-          copy[columnId] = [];
-        }
-        copy[columnId][rowIndex] = calculateForCell(matrix, formula);
-        setData(copy);
+        onCellFormulaSubmit(value, rowIndex, columnIndex);
+        // save formula for later use
+        const copyFM = [...formulaMatrix];
+        copyFM[rowIndex][columnIndex] = value;
+        setFormulaMatrix(copyFM);
+      } else {
+        // remove formula
+        const copyFM = [...formulaMatrix];
+        copyFM[rowIndex][columnIndex] = '';
+        setFormulaMatrix(copyFM);
       }
     };
 
@@ -147,7 +170,12 @@ const OpviaTable: React.FC<OpviaTableProps> = (props) => {
       <EditableCell2
         value={String(value)}
         onChange={onCellChange(rowIndex, columnIndex)}
-        onConfirm={onCellConfirm(columnId, rowIndex)}
+        onConfirm={onCellConfirm(rowIndex, columnIndex)}
+        onEditValue={
+          formulaMatrix[rowIndex]
+            ? formulaMatrix[rowIndex][columnIndex]
+            : undefined
+        }
       />
     );
   };
@@ -179,7 +207,7 @@ const OpviaTable: React.FC<OpviaTableProps> = (props) => {
       <FormulaDialog
         isOpen={editingColumnFormula !== undefined}
         onClose={() => setEditingColumnFormula(undefined)}
-        onSubmit={onFormulaSubmit}
+        onSubmit={onColumnFormulaSubmit}
         formula={getColumnFormula(editingColumnFormula)}
       ></FormulaDialog>
     </>

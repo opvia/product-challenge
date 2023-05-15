@@ -6,12 +6,24 @@ const aggregateFnNames = ['SUM', 'AVERAGE', 'MAX', 'MIN', 'MEDIAN'];
 const aggregateFnRegexStr = `(${aggregateFnNames.join('|')})\\s*\\(\\s*[A-Z]\\s*\\)`;
 
 export const isFormulaInput = (value: string) => {
-  return value.trim().startsWith('=');
+  return value?.trim().startsWith('=');
 };
 
 export const getFormulaFromInput = (value: string) => {
   // Remove spaces and the '=' sign from the formula input
-  return value.trim().slice(1);
+  return value?.trim().slice(1);
+};
+
+export const createMatrix = <T>(rows: number, columns: number, value: T) => {
+  const data: T[][] = [];
+  for (let i = 0; i < rows; i++) {
+    const row: T[] = [];
+    for (let j = 0; j < columns; j++) {
+      row.push(value);
+    }
+    data.push(row);
+  }
+  return data;
 };
 
 export const calculateForColumn = (
