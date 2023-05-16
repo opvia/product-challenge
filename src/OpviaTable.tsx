@@ -79,6 +79,9 @@ const OpviaTable: React.FC<OpviaTableProps> = (props) => {
   };
 
   const onColumnFormulaSubmit = (formula: string) => {
+    // Remove any column's cells formulas from the matrix
+    const copyFM = [...formulaMatrix];
+    copyFM.forEach((row) => row[editingColumnFormula!] = '');
     // Save formula in column
     const columnsCopy = [...columns];
     const columnCopy = columnsCopy[editingColumnFormula!];
