@@ -41,7 +41,7 @@ const OpviaTable: React.FC<OpviaTableProps> = (props) => {
     React.useState<number>();
   const numRows = data[Object.keys(data)[0]].length;
   const [formulaMatrix, setFormulaMatrix] = React.useState<string[][]>(
-    props.formulas ?? createMatrix(numRows, columns.length, ''),
+    props.formulas ?? createMatrix(columns.length, numRows, ''),
   );
 
   React.useEffect(() => {
@@ -82,7 +82,8 @@ const OpviaTable: React.FC<OpviaTableProps> = (props) => {
   const onColumnFormulaSubmit = (formula: string) => {
     // Remove any column's cells formulas from the matrix
     const copyFM = [...formulaMatrix];
-    copyFM.forEach((row) => (row[editingColumnFormula!] = ''));
+    copyFM[editingColumnFormula!] = new Array(numRows).fill('');
+    setFormulaMatrix(copyFM);
     // Save formula in column
     const columnsCopy = [...columns];
     const columnCopy = columnsCopy[editingColumnFormula!];
@@ -157,12 +158,12 @@ const OpviaTable: React.FC<OpviaTableProps> = (props) => {
         onCellFormulaSubmit(value, rowIndex, columnIndex);
         // save formula for later use
         const copyFM = [...formulaMatrix];
-        copyFM[rowIndex][columnIndex] = value;
+        copyFM[columnIndex][rowIndex] = value;
         setFormulaMatrix(copyFM);
       } else {
         // remove formula
         const copyFM = [...formulaMatrix];
-        copyFM[rowIndex][columnIndex] = '';
+        copyFM[columnIndex][rowIndex] = '';
         setFormulaMatrix(copyFM);
       }
     };
@@ -176,8 +177,8 @@ const OpviaTable: React.FC<OpviaTableProps> = (props) => {
         onChange={onCellChange(rowIndex, columnIndex)}
         onConfirm={onCellConfirm(rowIndex, columnIndex)}
         onEditValue={
-          formulaMatrix[rowIndex]
-            ? formulaMatrix[rowIndex][columnIndex]
+          formulaMatrix[columnIndex]
+            ? formulaMatrix[columnIndex][rowIndex]
             : undefined
         }
       />
