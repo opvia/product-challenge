@@ -34,7 +34,7 @@ const FormulaDialog: React.FC<FormulaDialogProps> = ({
   }, [formula]);
 
   const submit = () => {
-    onSubmit(value);
+    onSubmit(value.trim());
   };
 
   return (
@@ -52,7 +52,7 @@ const FormulaDialog: React.FC<FormulaDialogProps> = ({
               placeholder="A + B + C ..."
               value={value}
               autoFocus={true}
-              onChange={(e) => setValue(e.target.value.trim())}
+              onChange={(e) => setValue(e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') submit();
               }}
