@@ -26,6 +26,12 @@ export const createMatrix = <T>(rows: number, columns: number, value: T) => {
   return data;
 };
 
+/**
+ * Calculates the value of a column formula for a given row
+ * @param data An array of columns, each column is an array of values
+ * @param formula A string representing a formula
+ * @param row The row index of the cell that the formula is being calculated for
+ */
 export const calculateForColumn = (
   data: DataMatrix,
   formula: string,
@@ -52,7 +58,7 @@ const isValidFormula = (formula: string, isForCell = false) => {
     ? `(${functions}|${cells}|${numbers})`
     : `(${functions}|${columns}|${cells}|${numbers})`;
   const exp = new RegExp(
-    `^\\s*(${operands})\\s*(${operators}\\s*(${operands})\\s*)*\\s*$`,
+    `^\\s*\\(*\\s*(${operands})\\s*(${operators}\\s*(${operands})\\s*\\)*\\s*)*\\s*$`,
   );
   return formula.match(exp);
 };
@@ -139,6 +145,11 @@ const columnToIndex = (column: string) => {
   return column.charCodeAt(0) - 65;
 };
 
+/**
+ * Calculates the value of formula. To be used for cell formulas.
+ * @param data An array of columns, each column is an array of values
+ * @param formula A string representing a formula
+ */
 export const calculateForCell = (data: DataMatrix, formula: string) => {
   if (!isValidFormula(formula, true)) {
     return '#NON_VALID_FORMULA';
