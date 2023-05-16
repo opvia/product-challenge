@@ -61,12 +61,18 @@ const OpviaTable: React.FC<OpviaTableProps> = (props) => {
     });
     setData({ ...data, [columnId]: new Array(numRows).fill(' ') });
     setCols(copy);
+    const copyFM = [...formulaMatrix];
+    copyFM.splice(pos, 0, new Array(numRows).fill(''));
+    setFormulaMatrix(copyFM);
   };
 
   const onRemoveColumn = (index: number) => () => {
     const copy = [...columns];
     copy.splice(index!, 1);
     setCols(copy);
+    const copyFM = [...formulaMatrix];
+    copyFM.splice(index!, 1);
+    setFormulaMatrix(copyFM);
   };
 
   const onColumnNameChange = (index: number) => (value: string) => {
