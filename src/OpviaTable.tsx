@@ -187,7 +187,7 @@ const OpviaTable: React.FC<OpviaTableProps> = (props) => {
 
   const getColumnFormula = (index?: number) => {
     if (index === undefined) return '';
-    return columns[index].columnFormula || '';
+    return columns[index].columnFormula || ' ';
   };
 
   const cols = columns.map((column) => (
