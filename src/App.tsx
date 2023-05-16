@@ -13,17 +13,24 @@ const originalColumns = [
 const App: React.FC = () => {
   const data = getFromStorage<Data>('data') || dummyTableData;
   const columns = getFromStorage<DataColumn[]>('columns') ?? originalColumns;
+  const formulas = getFromStorage<string[][]>('formulas') ?? [];
 
   return (
     <div className="App">
-      <OpviaTable columns={columns} data={data} onChange={onChangeTable}/>
+      <OpviaTable
+        columns={columns}
+        data={data}
+        formulas={formulas}
+        onChange={onChangeTable}
+      />
     </div>
   );
 };
 
-const onChangeTable = (data: any, columns: any) => {
+const onChangeTable = (data: Data, columns: DataColumn[], formulas: string[][]) => {
   saveInStorage('columns', columns);
   saveInStorage('data', data);
+  saveInStorage('formulas', formulas);
 };
 
 export default App;
