@@ -9,10 +9,11 @@ This is our only opportunity to see what you can build so we weight it very high
 ## How to complete this stage of the interview process
 
 1. Please clone this repo and use it as your starting point. This is a simple create-react-app featuring the blueprintjs table component https://blueprintjs.com/docs/#table
-2. We have a prettier config to help you format your code better, but please add eslint if you wish.
-3. Also feel free to restructure the code base to make it better and add missing types wherever you see fit to gain some brownie points. 🎉
-4. Take your time to complete the 'Opvia product problem' below. It's up to you how you go about this!
-5. Invite _jrans_ , _hfmw_ ,  _OliverWales_ to your own repo with your solution when you're done
+2. Please don't fork this repo. When we remove you from it, your forked repo will be lost.
+3. We have a prettier config to help you format your code better, but please add eslint if you wish.
+4. Also feel free to restructure the code base to make it better and add missing types wherever you see fit to gain some brownie points. 🎉
+5. Take your time to complete the 'Opvia product problem' below. It's up to you how you go about this!
+6. Invite _jrans_ , _hfmw_ ,  _OliverWales_ to your own repo with your solution when you're done
 
 ## Opvia product problem
 
