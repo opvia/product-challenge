@@ -40,7 +40,7 @@ Ran out of time? Document any features that you'd like to have built.
 
 #### FAQS
 
-- Can I change the structure/content of the raw data? - yes feel free to, but don't feel obligated to (this is a product not and engineering challenge)
+- Can I change the structure/content of the raw data? - yes feel free to, but don't feel obligated to (this is a product not an engineering challenge)
 
 #### Any questions
 
