@@ -44,4 +44,4 @@ Ran out of time? Document any features that you'd like to have built.
 
 #### Any questions
 
-If you have any questions, or anything is unclear please email Jack at `jack.rans@opvia.bio`
+If you have any questions, or anything is unclear please email Jack at `will@opvia.io`
