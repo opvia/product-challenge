@@ -21,7 +21,7 @@ They have said that it would be useful if they could calculate the cell count in
 The Opvia platform allows scientists to build what they need. So, instead of building in these specific features, we have identified two higher level features which would enable the customer to achieve what they need, whilst also be useful for other use-cases.
 
 1. `Calculation columns`, where the user can add a column with a formula such as `Cell Density * Volume`
-2. `Column aggregations`, where the user can select to view summaries of certain columns e.g. `Max Cell Count`
+2. `Column aggregations`, where the user can aggregate data from a column e.g. `Max Cell Count`
 
 You have a call scheduled with the scientist. Build a working MVP that you could give the user access to to get their feedback.
 
