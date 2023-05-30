@@ -32,3 +32,4 @@ You have a call scheduled with the scientist. Build a working MVP that you could
 - Ran out of time? Document any features that you'd like to have built.
 - I have a question? Please ask!! Email `oli@opvia.io` and cc  `will@opvia.io`
 - How should I communicate? Please over communicate. We want to learn what it's like to work with you :)
+- Do I need to write tests? - not unless it helps you! We're just looking for "a working MVP that you could give the user access to to get their feedback"
