@@ -10,7 +10,8 @@ This is our only opportunity to see what how you build so we weight it very high
 
 1. Please clone this repo and use it as your starting point. This is a simple create-react-app featuring the blueprintjs table component https://blueprintjs.com/docs/#table
 2. Complete the 'Opvia product problem' below
-3. Invite _hfmw_ & _OliverWales_ to your own private repo when you're done
+3. When you are done, create a private repo and push your code to it
+4. Invite _hfmw_ & _OliverWales_ to view the repo
 
 ## Opvia product problem
 
