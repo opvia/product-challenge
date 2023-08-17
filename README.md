@@ -4,7 +4,7 @@ Congratulations on being selected for the next stage of our interview process!
 
 We really appreciate the time you have invested in the process so far and only invited you to this next challenge because we think there's a very good chance you'd be a great fit at Opvia. This is the penultimate step in the interview process! For context at this stage the probability of a candidate receiving an offer is (~25%).
 
-This is our only opportunity to see what how you build so we weight it very highly.
+This is our only opportunity to see how you deliver on a product problem, so we it very highly.
 
 ## How to complete this stage of the interview process
 
