@@ -19,7 +19,7 @@ Scientists are using Opvia to store all their data in a standardised structure. 
 
 They have said that it would be useful if they could calculate the cell count in Opvia, as well as being able to see its maximum value.
 
-The Opvia platform allows scientists to build what they need. So, instead of building in these specific features, we have identified two higher level features which would enable the customer to achieve what they need, whilst also be useful for other use-cases.
+The Opvia platform allows scientists to build what they need. So, instead of building in these specific features, we have identified two higher level features which would enable the customer to achieve what they need, whilst also being useful for other use-cases.
 
 1. `Calculation columns`, where the user can add a column with a formula such as `Cell Density * Volume`
 2. `Column aggregations`, where the user can aggregate data from a column e.g. `Max Cell Count`
