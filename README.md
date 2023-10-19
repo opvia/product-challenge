@@ -26,6 +26,8 @@ The Opvia platform allows scientists to build what they need. So, instead of bui
 
 You have a call scheduled with the scientist. Build a working MVP that you could give the user access to to get their feedback.
 
+In the readme describe what improvements you plan to make and how you would make it possible to do rate of change calculations e.g. `Rate of Cell Count Growth`
+
 #### FAQS
 
 - Can I change the structure/content of the raw data? - yes feel free to, but don't feel obligated to (this is a product not an engineering challenge)
