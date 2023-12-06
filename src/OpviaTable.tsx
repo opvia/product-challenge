@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Column, EditableCell2, Table2 } from '@blueprintjs/table';
+import { Cell, Column, Table2 } from '@blueprintjs/table';
 import { dummyTableData } from './data/dummyData';
 
 const columns = [
@@ -12,13 +12,13 @@ const columns = [
 const OpviaTable: React.FC = () => {
   const getSparseRefFromIndexes = (
     rowIndex: number,
-    columnIndex: number
+    columnIndex: number,
   ): string => `${columnIndex}-${rowIndex}`;
 
   const cellRenderer = (rowIndex: number, columnIndex: number) => {
     const sparsePosition = getSparseRefFromIndexes(rowIndex, columnIndex);
     const value = dummyTableData[sparsePosition];
-    return <EditableCell2 value={String(value)} />;
+    return <Cell>{String(value)}</Cell>;
   };
 
   const cols = columns.map((column) => (
@@ -30,7 +30,7 @@ const OpviaTable: React.FC = () => {
   ));
 
   return (
-    <Table2 defaultRowHeight={30} numRows={8}>
+    <Table2 defaultRowHeight={35} numRows={95}>
       {cols}
     </Table2>
   );
