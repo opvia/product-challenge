@@ -4,7 +4,7 @@ Congratulations on being selected for the penultimate stage of our interview pro
 
 We really appreciate the time you have invested so far and only invited you to this challenge because we think there's a very good chance we'd be a great fit.
 
-This is our only opportunity to see how you deliver on a product problem, so we it very highly.
+This is our only opportunity to see how you deliver on a product problem, so we value it very highly.
 
 ## How to complete this stage of the interview process
 
