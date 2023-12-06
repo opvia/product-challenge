@@ -15,18 +15,20 @@ This is our only opportunity to see how you deliver on a product problem, so we 
 
 ## Opvia product problem
 
-Scientists are automatically uploading their data from bioreactors into Opvia. To help you some example data is already loaded into the table.
+Scientists are automatically uploading their data from bioreactors into Opvia. To help you, some example data is already loaded into the table.
 
-It would be useful if they could calculate the cell count at any point in time, as well as being able to see its maximum value.
+In the example data, each row shows the density of the cells and the total volume in the bioreactor at a given point in time.
 
-Instead of building in these specific features, we have identified two higher level features which would solve this problem, and be useful to all of our customers:
+The scientists want to calculate the cell count at any point in time, as well as being able to see the maximum cell count.
 
-1. `Calculation columns`, where the user can add a column with a formula such as `Cell Density * Volume`
-2. `Column aggregations`, where the user can create an aggregation from data in a column e.g. `Max Cell Count`
+Instead of building in these specific features, we have identified two higher level features to build which would solve their problem, and would be useful to all of our customers:
 
-You have a call scheduled with the scientist. Build a working MVP that you could show the user to gather their feedback. Please use <a href="https://blueprintjs.com/">Blueprintjs</a>.
+1. `Calculation columns`, these are columns in the table that are populated based on a user defined formula e.g. A cell count column that is created by the formula: `Cell Density * Volume` 
+2.  A `Column Aggregations` feature which allows a user to perform operations on a selected data column, such as showing the `Maximum Density`, `Minimum Cell Count`, etc...
 
-Put your notes and instructions in the readme as well as what you would do next, and how you would make it possible to do `Rate of change calculations` e.g. `Rate of Cell Count Growth`
+You have a call scheduled with the scientist. Build a working MVP of these higher level features that you could show the user to gather their feedback. Please use <a href="https://blueprintjs.com/">Blueprintjs</a>.
+
+Put any notes and your instructions in the README as well as what you would do next to improve this. Please also answer how you would make it possible to do `Rate of change calculations` e.g. `Rate of Cell Count Growth`
 
 #### FAQS
 
