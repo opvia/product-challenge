@@ -11,7 +11,7 @@ This is our only opportunity to see how you deliver on a product problem, so we 
 1. Please clone this repo and use it as your starting point
 2. Complete the 'Opvia product problem' below
 3. When you are done, create a private repo and push your code to it
-4. Invite _hfmw_ & _OliverWales_ to view the repo
+4. Invite _hfmw_ & _Albertopvia_ to view the repo
 
 ## Opvia product problem
 
