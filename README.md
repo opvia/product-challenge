@@ -1,39 +1,38 @@
 # Opvia Take-home Product Challenge
 
-Congratulations on being selected for the next stage of our interview process!
+Congratulations on being selected for the penultimate stage of our interview process!
 
-We really appreciate the time you have invested in the process so far and only invited you to this next challenge because we think there's a very good chance you'd be a great fit at Opvia. This is the penultimate step in the interview process! For context at this stage the probability of a candidate receiving an offer is (~25%).
+We really appreciate the time you have invested so far and only invited you to this challenge because we think there's a very good chance we'd be a great fit.
 
 This is our only opportunity to see how you deliver on a product problem, so we it very highly.
 
 ## How to complete this stage of the interview process
 
-1. Please clone this repo and use it as your starting point. This is a simple create-react-app featuring the blueprintjs table component https://blueprintjs.com/docs/#table
+1. Please clone this repo and use it as your starting point
 2. Complete the 'Opvia product problem' below
 3. When you are done, create a private repo and push your code to it
 4. Invite _hfmw_ & _OliverWales_ to view the repo
 
 ## Opvia product problem
 
-Scientists are using Opvia to store all their data in a standardised structure. The example data has come from a scientists who is uploading their bioreactor data into Opvia.
+Scientists are automatically uploading their data from bioreactors into Opvia. To help you some example data is already loaded into the table.
 
-They have said that it would be useful if they could calculate the cell count in Opvia, as well as being able to see its maximum value.
+It would be useful if they could calculate the cell count at any point in time, as well as being able to see its maximum value.
 
-The Opvia platform allows scientists to build what they need. So, instead of building in these specific features, we have identified two higher level features which would enable the customer to achieve what they need, whilst also being useful for other use-cases.
+Instead of building in these specific features, we have identified two higher level features which would solve this problem, and be useful to all of our customers:
 
 1. `Calculation columns`, where the user can add a column with a formula such as `Cell Density * Volume`
-2. `Column aggregations`, where the user can aggregate data from a column e.g. `Max Cell Count`
+2. `Column aggregations`, where the user can create an aggregation from data in a column e.g. `Max Cell Count`
 
-You have a call scheduled with the scientist. Build a working MVP that you could give the user access to to get their feedback.
+You have a call scheduled with the scientist. Build a working MVP that you could show the user to gather their feedback. Please use <a href="https://blueprintjs.com/">Blueprintjs</a>.
 
-In the readme describe what improvements you would make, and how you would make it possible to do `Rate of change calculations` e.g. `Rate of Cell Count Growth`
+Put your notes and instructions in the readme as well as what you would do next, and how you would make it possible to do `Rate of change calculations` e.g. `Rate of Cell Count Growth`
 
 #### FAQS
 
 - Can I change the structure/content of the raw data? - yes feel free to, but don't feel obligated to (this is a product not an engineering challenge)
-- Where is the data coming from? It's from an instrument (a bioreactor). 
-- Unsure whether to submit? Would you happily get on a call with a scientist and give them access? Would what you've showed them make them more excited about using Opvia?
-- Ran out of time? Document any features that you'd like to have built.
-- I have a question? Please ask!! Email `oli@opvia.io` and cc  `will@opvia.io`
+- Unsure whether to submit? Would you happily get on a call with a scientist and show them this?
+- Ran out of time? Make this clear in the readme, and write out what you would do next.
+- I have a question? Please ask!! Email `will@opvia.io` and cc `alberto@opvia.io`.
 - How should I communicate? Please over communicate. We want to learn what it's like to work with you :)
-- Do I need to write tests? - not unless it helps you! We're just looking for "a working MVP that you could give the user access to to get their feedback"
+- What are you looking for? Pretend this is a real challenge you were given. We want to see something that would be useful to show to a scientist to gather feedback. We don't care about the code – this is a product challenge to test your ability to start with a problem, not a design.
