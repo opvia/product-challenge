@@ -2,7 +2,7 @@
 
 Congratulations on being selected for the penultimate stage of our interview process!
 
-We really appreciate the time you have invested so far and only invited you to this challenge because we think there's a very good chance we'd be a great fit.
+We really appreciate the time you have invested so far and only invited you to this challenge because we think there's a good chance we'd be a great fit.
 
 This is our only opportunity to see how you deliver on a product problem, so we value it very highly.
 
@@ -36,5 +36,5 @@ Put any notes and your instructions in the README as well as what you would do n
 - Unsure whether to submit? Would you happily get on a call with a scientist and show them this?
 - Ran out of time? Make this clear in the readme, and write out what you would do next.
 - I have a question? Please ask!! Email `will@opvia.io` and cc `alberto@opvia.io`.
-- How should I communicate? Please over communicate. We want to learn what it's like to work with you :)
+- How should I communicate? Please over communicate. Please ask questions!
 - What are you looking for? Pretend this is a real challenge you were given. We want to see something that would be useful to show to a scientist to gather feedback. We don't care about the code – this is a product challenge to test your ability to start with a problem, not a design.
