@@ -22,7 +22,7 @@ Instead of building in these features, we have identified two higher level featu
 1. `Calculation columns`, these are columns in the table that are populated based on a user defined formula e.g. A cell count column that is created by the formula: `Cell Density * Volume` 
 2.  A `Column Aggregations` feature which allows a user to perform operations on a selected data column, such as showing the `Maximum Density`, `Minimum Cell Count`, etc...
 
-You have a call scheduled with the scientist. Build a working MVP of these higher level features that you could show the user to gather their feedback. Please use <a href="https://blueprintjs.com/">Blueprintjs</a>.
+You have a meeting scheduled with the scientist who is a customer. Build something they will be use on your laptop to give you feedback. Please use <a href="https://blueprintjs.com/">Blueprintjs</a>.
 
 Put any notes and your instructions in the README as well as what you would do next to improve this. Please also answer how you would make it possible to do `Rate of change calculations` e.g. `Rate of Cell Count Growth`
 
