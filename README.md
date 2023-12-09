@@ -17,7 +17,7 @@ In the example data, each row shows the density of the cells and the total volum
 
 The scientists want to calculate the cell count at any point in time, as well as being able to see the maximum cell count.
 
-Instead of building in these specific features, we have identified two higher level features to build which would solve their problem, and would be useful to all of our customers:
+Instead of building in these features, we have identified two higher level features to build which would solve their problem, and would be useful to all of our customers:
 
 1. `Calculation columns`, these are columns in the table that are populated based on a user defined formula e.g. A cell count column that is created by the formula: `Cell Density * Volume` 
 2.  A `Column Aggregations` feature which allows a user to perform operations on a selected data column, such as showing the `Maximum Density`, `Minimum Cell Count`, etc...
