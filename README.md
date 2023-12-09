@@ -1,10 +1,6 @@
 # Opvia Take-home Product Challenge
 
-Congratulations on being selected for the penultimate stage of our interview process!
-
-We appreciate the time you have invested so far and only invited you to this challenge because we think there's a good chance we'd be a great fit.
-
-This is our only opportunity to see how you build, so please show us how you build.
+Congratulations! This is the last stage before the final in person interview. This is our only opportunity to see how you build, so we weight it extremely highly.
 
 ## How to complete this stage of the interview process
 
