@@ -11,7 +11,7 @@ Congratulations! This is the last stage before the final interview. It's your op
 
 ## Opvia product problem
 
-Scientists are automatically uploading their data from bioreactors into Opvia. To help you, some example data is already loaded into the table.
+Scientists are automatically uploading their data from bioreactors into Opvia. To help you, some example data is already loaded into a table.
 
 In the example data, each row shows the density of the cells and the total volume in the bioreactor at a given point in time.
 
