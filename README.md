@@ -1,6 +1,6 @@
 # Opvia Take-home Product Challenge
 
-Congratulations! This is the last stage before the final in person interview. This is our only opportunity to see how you build, so we weight it extremely highly.
+Congratulations! This is the last stage before the final in person interview. This is our only opportunity to see how you build, so we weight it extremely highly. Please show us what you can do!
 
 ## How to complete this stage of the interview process
 
