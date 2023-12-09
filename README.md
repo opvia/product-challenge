@@ -34,7 +34,6 @@ Put any notes and your instructions in the README as well as what you would do n
 
 - Not sure about something? Please ask! Email `will@opvia.io` and cc `alberto@opvia.io`.
 - How should I communicate? Please over communicate. Please ask questions.
-- What are you looking for? Pretend this is a real challenge where the goal is to get feedback on the features specified.
-- Can I change the structure/content of the raw data? - yes feel free to
-- Unsure whether to submit? Would you happily get on a call with a scientist and show them this?
+- What are you looking for? The goal is to get feedback on the features specified. It needs to deliver the specified features well, being easy to use and making a good impression on the customer.
+- Unsure whether to submit? Would you be happy to sit next to a customer and let them test it on your laptop?
 - Ran out of time? Make this clear in the readme, and write out what you would do next.
