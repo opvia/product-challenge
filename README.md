@@ -1,17 +1,17 @@
-# Opvia Take-home Product Challenge
+# Seal Take-home Product Challenge
 
 Congratulations! This is the last stage before the final interview. It's your opportunity show how you build, so we weight it very highly.
 
 ## How to complete this stage of the interview process
 
 1. Please clone this repo and use it as your starting point
-2. Complete the 'Opvia product problem' below
+2. Complete the 'Seal product problem' below
 3. When you are done, create a private repo and push your code to it
 4. Invite _hfmw_ to view the repo
 
-## Opvia product problem
+## Seal product problem
 
-Scientists are automatically uploading their data from bioreactors into Opvia. To help you, some example data is already loaded into a table.
+Scientists are automatically uploading their data from bioreactors into Seal. To help you, some example data is already loaded into a table.
 
 In the example data, each row shows the density of the cells and the total volume in the bioreactor at a given point in time.
 
@@ -28,7 +28,7 @@ Put any notes and your instructions in the README as well as what you would do n
 
 #### FAQS
 
-- Not sure about something? Please ask! Email `will@opvia.io` and cc `alberto@opvia.io`.
+- Not sure about something? Please ask! Email `will@seal.run.
 - How should I communicate? Please over communicate. Please ask questions.
 - What are you looking for? The goal is to get feedback on the features specified. It needs to deliver the specified features well, being easy to use and making a good impression on the customer.
 - Unsure whether to submit? Would you be happy to sit next to a customer and let them test it on your laptop?
