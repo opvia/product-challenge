@@ -1,6 +1,6 @@
 # Seal Take-home Product Challenge
 
-Congratulations! This is the last stage before the final interview. It's your opportunity show how you build, so we weight it very highly.
+Congratulations! This is the last stage before the final interview. It's your opportunity show your product skills, so we weight it very highly.
 
 ## How to complete this stage of the interview process
 
