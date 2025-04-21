@@ -4,10 +4,9 @@ Congratulations! This is the last stage before the final interview. It's your op
 
 ## How to complete this stage of the interview process
 
-1. Please clone this repo and use it as your starting point
+1. Please clone this repo into your own private repo
 2. Complete the 'Seal product problem' below
-3. When you are done, create a private repo and push your code to it
-4. Invite _hfmw_ to view the repo
+4. Invite _hfmw_ to view the repo & put a link in the form [here](https://forms.gle/E9LASH1Nyhoa3pu48)
 
 ## Seal product problem
 
