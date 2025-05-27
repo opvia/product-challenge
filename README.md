@@ -27,7 +27,7 @@ Put any notes and your instructions in the README as well as what you would do n
 
 #### FAQS
 
-- Not sure about something? Please ask! Email `will@seal.run.
+- Not sure about something? Please ask! Email will@seal.run.
 - How should I communicate? Please over communicate. Please ask questions.
 - What are you looking for? The goal is to get feedback on the features specified. It needs to deliver the specified features well, being easy to use and making a good impression on the customer.
 - Unsure whether to submit? Would you be happy to sit next to a customer and let them test it on your laptop?
