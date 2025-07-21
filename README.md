@@ -29,3 +29,5 @@ The bar for success is a working prototype that is so intuitive and well-crafted
 ## **Evaluation**
 
 We will look at your submission and ask one question: **Did you build something great?**
+
+*P.S. getting set up is low-signal – if we can make it quicker to get started with this challenge please tell us. likewise if you don't think this is the best test of your skills*
