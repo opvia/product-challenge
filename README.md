@@ -1,35 +1,31 @@
-# Seal Product Challenge
+# **The Seal Challenge**
 
-This challenge is a simulation of a core task at Seal: turning customer problems into a well-designed product. Your approach to this problem will be the most important factor in our evaluation.
+**A Note on Time & Privacy:** This is a **2-4 hour challenge**. We respect your time and your privacy. Your work on this challenge will remain confidential.
 
-We are not testing your coding ability. We are looking to understand how you think and the quality of the experience you create.
+**The Mission:** Our goal is to accelerate the arrival of life-changing technologies, from personalized medicines to sustainable solutions. The GxP bottleneck means these breakthroughs take decades; we exist to make it take days. Our first step is to create a unified system of record for scientists, moving them from paper and spreadsheets. This is the critical foundation that will unlock our ultimate goal: enabling them to fully simulate their processes.
 
-## The Task
+**How We Work:** This challenge simulates our process. Engineers at Seal own problems, not tickets. You will speak directly with the scientists using our tools, understand their core needs, and ship a solution to our core platform that has an immediate impact.
 
-**1. Understand the Context:**
-Scientists use Seal to collect raw data from their lab experiments. For example, a bioreactor might log cell density and volume over time. The data is collected accurately, but Seal currently lacks tools for even basic analysis.
+**The Test:** Your task is to solve a real user problem with an elegant product.
 
-**2. Define the Problem:**
-A scientist needs to perform a simple calculation (`Cell Density * Volume`) and find the maximum value of that result.
+We have a simple data table. A scientist needs to create a new column by performing a calculation on existing columns (e.g., `Column A * Column B`).
 
-**3. Build a Prototype:**
-To solve this class of problem for all our users, prototype two features:
-* **`Calculation Columns`**: A way for users to create new columns using formulas.
-* **`Column Aggregations`**: A way to perform simple operations like `MAX` on a column.
+**Your goal is to build this one interaction perfectly.**
 
-The functional scope is intentionally small. This isn't a test of feature quantity. We're focused entirely on the quality of your execution and the thinking behind it.
+The bar for success is a working prototype that is so intuitive and well-crafted that it would impress a customer.
 
-**4. Deliver the Prototype:**
-The deliverable is a prototype judged on the quality of the user experience. It must be so intuitive that a scientist can accomplish their goal with zero instruction, and the interaction should feel so simple and well-crafted that they are left impressed.
-* Use [Blueprintjs](https://blueprintjs.com/).
-* Clone this repo into a private one and invite `_hfmw_`.
-* Add the link to this [form](https://forms.gle/E9LASH1Nyhoa3pu48).
-* In the README, explain how to run the prototype and outline your thinking on what to build next, including how you would approach more complex `Rate of Change` calculations.
+## **Submission**
 
-## How We Evaluate This Challenge
+1.  To get started, **clone our boilerplate repo** (do not fork it) and push it to a **new private repository** on your own GitHub account.
+2.  **Deploy your prototype** to a public URL (e.g., Vercel, Netlify). The deployment itself should be anonymous.
+3.  **Answer the two questions below** in the README of your private repository.
+4.  When finished, **submit only the link to your live prototype** via this form: **[https://forms.gle/E9LASH1Nyhoa3pu48](https://forms.gle/E9LASH1Nyhoa3pu48)**
 
-If anything is unclear as you work, please ask. We want too much communication (will@seal.run).
+## **Questions**
 
-A successful demonstrates a deep consideration for the user's experience and leaves the impression of a simple, elegant solution. It's the kind of work you would be proud to have a customer scrutinize.
+1.  **Scalability:** Your UI works for 100 rows. In one sentence, what is the most important change you would make for it to work with 1,000,000 rows, and why?
+2.  **Extensibility:** How would you adapt your design for a `Rate of Change` calculation (`(value_t2 - value_t1) / (time_t2 - time_t1)`)? In one or two sentences, what is the primary challenge this introduces?
 
-We hold this bar because we are a small team that gives individuals full ownership of their work, from the initial idea to the final user experience. This level of autonomy requires a high degree of product sense and an obsessive care for detail. Your work on this challenge is the clearest signal we have of how you think, solve problems, and what you consider a high-quality outcome.
+## **Evaluation**
+
+We will look at your submission and ask one question: **Did you build something great?**
