@@ -18,13 +18,12 @@ The bar for success is a working prototype that is so intuitive and well-crafted
 
 1.  To get started, **clone our boilerplate repo** (do not fork it) and push it to a **new private repository** on your own GitHub account.
 2.  **Deploy your prototype** to a public URL (e.g., Vercel, Netlify). The deployment should be anonymous (no names in the URL or on the page) to ensure merit-based review.
-3.  **Answer the two questions below** in the README of your private repository.
-4.  When finished, **submit only the link to your live prototype** via this form: **[https://forms.gle/E9LASH1Nyhoa3pu48](https://forms.gle/E9LASH1Nyhoa3pu48)**
+3.  When finished, **submit the link to your live prototype** via this form: **[https://forms.gle/E9LASH1Nyhoa3pu48](https://forms.gle/E9LASH1Nyhoa3pu48)** including the answers to the below questions in 'additional comments'
 
 ## **Questions**
 
 1.  **Scalability:** Your UI works for 100 rows. In one sentence, what is the most important change you would make for it to work with 1,000,000 rows, and why?
-2.  **Extensibility:** How would you adapt your design for a `Rate of Change` calculation (`(value_t2 - value_t1) / (time_t2 - time_t1)`)? In one or two sentences, what is the primary challenge this introduces?
+2.  **Extensibility:** How would you adapt your design for a `Rate of Change` calculation (`(value_t2 - value_t1) / (time_t2 - time_t1)`)?
 
 ## **Evaluation**
 
