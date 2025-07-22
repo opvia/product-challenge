@@ -1,6 +1,6 @@
 # **The Seal Challenge**
 
-**A Note on Time & Privacy:** This is a **2-4 hour challenge**. We respect your time and your privacy. Your work on this challenge will remain confidential.
+**A Note on Time & Privacy**: This is a 2-3 hour challenge. If you find yourself spending more than 4 hours, you’re overthinking it. We respect your privacy, and your work will remain confidential.
 
 **The Mission:** Life-changing products in days, not decades. The bottleneck isn’t a lack of ideas; it’s the gauntlet of proving and producing them. Shackled to paper, the GxP validation and manufacturing process is so slow that it limited the world to just 10 new biologics last year. We build the AI-first platform these teams deserve, one that uses AI to conquer the burden of paper validation and unify their work. This is the foundation that will finally allow life-saving products to be proven and scaled at the speed of computation, not bureaucracy.
 
