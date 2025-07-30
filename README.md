@@ -1,4 +1,4 @@
-# Seal Challenge: The Calculated Column
+# Seal Engineer Challenge: The Calculated Column
 
 ### The Mission
 Getting a therapy from lab to patient is choked by **complexity mistaken for rigor**. Paper logs, spreadsheets, and siloed legacy systems slow down proving a process is safe, effective, and ready to scale.
