@@ -10,19 +10,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@blueprintjs/core": "^5.7.1",
-    "@blueprintjs/icons": "^5.4.1",
-    "@blueprintjs/select": "^5.0.19",
-    "@blueprintjs/table": "^4.7.5",
+    "@blueprintjs/core": "^5.19.1",
+    "@blueprintjs/icons": "^5.23.0",
+    "@blueprintjs/select": "^5.3.21",
+    "@blueprintjs/table": "^4.10.12",
     "normalize.css": "^8.0.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
-    "@vitejs/plugin-react": "^2.1.0",
-    "typescript": "^4.6.4",
-    "vite": "^3.1.0"
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^2.2.0",
+    "typescript": "^4.9.5",
+    "vite": "^3.2.11"
   }
 }
