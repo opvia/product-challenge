@@ -10,12 +10,13 @@ When a workflow *is* software it can be tested, simulated, and audited, turning 
 This challenge is one of those primitives.
 
 ### Your Mission: Build the Calculated Column
-See a view **view** of entities from a specific run.
+See a view of entities from a specific run.
 
 This view is defined by:
 1.  A **context object** (`viewContext`) that includes the `runId` and any active filters.
 2.  A set of **columns** for this run (`columnsForThisRun`).
-3.  An array of **immutable blobs**, where each blob has a `fields` array (`entitiesFromView`).
+
+At runtime, your component fetches the relevant immutable blobs for this run (`entitiesFromView`), each containing a `fields` array.
 
 ```ts
 // Example entity
@@ -37,10 +38,10 @@ Your component must let a scientist define a new, live-calculated field. It must
 | **Power** | `if(Density > 5, (Density - lag(Density)) / Δt, null)` | Multi-row, conditionals, helpers—without cluttering the simple path |
 
 ### Rules
-* **Performance** – UI stays snappy on **1 M+ rows**.
 * **Toolkit** – BlueprintJS only (pre-installed).
-* **Time** – Aim for **3-4 h**. If you’re past 4, simplify.
-* **Focus** – Stub heavy parsing if needed; taste & architecture matter more than regex.
+* **Time** – Aim for **3 h**. If you’re past 3, simplify.
+* **Focus** – Frontend only; taste & architecture matter more than regex.
+* **Persistence** – Store formula definitions as column metadata; do NOT modify the underlying blobs.
 
 > AI can write React. Taste is on you.
 
